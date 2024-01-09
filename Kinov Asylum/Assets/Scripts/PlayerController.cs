@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,10 +18,16 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed = 8f;
     public float walkSpeed = 4f;
     public float runSpeed = 8f;
-    public float stamina = 10f;
     private float horizontal;
+    private bool running = false;
     private bool isFacingRight = true;
-    private bool isHiding = false;
+    //private bool isHiding = false;
+
+    // STAMINA
+    public Image StaminaBar;
+    public float Stamina = 100f;
+    public float MaxStamina = 100f;
+    public float RunCost = 25f;
 
     // VIDA
     public float health = 100f;
@@ -35,16 +43,40 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         Flip();
 
+        // Sprint con Shift
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            running = true;
+            Debug.Log("wazaaaaaaaa");
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            running = false;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed * .8f);
         }
+
+        // Movimiento del personaje (caminar y esprintar).
+        if (running && (horizontal != 0 || Input.GetAxisRaw("Vertical") != 0))
+        {
+            rb.velocity = new Vector2(horizontal * runSpeed, rb.velocity.y);
+            Stamina -= RunCost * Time.deltaTime;
+            if (Stamina < 0) Stamina = 0;
+            StaminaBar.fillAmount = Stamina / MaxStamina;
+        }
+        else
+        {
+            rb.velocity = new Vector2(horizontal * walkSpeed, rb.velocity.y);
+        }
+
     }
 
     private void FixedUpdate()
     {
-        // Movimiento del personaje.
-        rb.velocity = new Vector2(horizontal * walkSpeed, rb.velocity.y);
+
     }
 
     private bool IsGrounded()
@@ -74,5 +106,33 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("si");
             }
         }
+
+        if (collision.gameObject.CompareTag("Door"))
+        {
+            LoadRandomScene();
+        }
+
+        if (collision.gameObject.CompareTag("Drawer"))
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+
+                Debug.Log("cajon abierto");
+            }
+        }
+    }
+
+    void LoadRandomScene()
+    {
+        int index = UnityEngine.Random.Range(0, 4);
+        int lastNumber = 0;
+        if (index == lastNumber)
+        {
+            index = UnityEngine.Random.Range(0, 4);
+        }
+        lastNumber = index;
+
+        SceneManager.LoadScene(index);
+        Debug.Log("Scene loaded");
     }
 }
