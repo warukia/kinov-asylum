@@ -1,39 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] float[] percentages;
-    [SerializeField] Scene[] scenes;
+    public Animator transition;
+    public float transitionTime = 1f;
 
     void Update()
     {
         
     }
 
-    //private int GetRandomSpawn()
-    //{
-    //    float random = Random.Range(0f, 1f);
-    //    float numForAdding = 0;
-    //    float total = 0;
-    //    for (int i = 0; i < percentages.Length; i++)
-    //    {
-    //        total += percentages[ii];
-    //    }
-
-    //    for (int i = 0; i < scenes.Length; i++)
-    //    {
-    //        if (percentages[i] / total + numForAdding >= random)
-    //        {
-    //            return
-    //        }
-    //    }
-    //}
-
-    public void LoadScene()
+    // CARGAR SIGUIENTE ROOM ALEATORIAMENTE
+    public void LoadNextRoom()
     {
-        
+        StartCoroutine(LoadNextRoomCoroutine());
+    }
+    IEnumerator LoadNextRoomCoroutine()
+    {
+        // Iniciar animación
+        transition.SetTrigger("Start");
+
+        // Espera un poco
+        yield return new WaitForSeconds(transitionTime);
+
+        // Calcular el nivel que cargará
+        int index = Random.Range(1, 5);
+        int lastNumber = 0;
+        if (index == lastNumber)
+        {
+            index = Random.Range(1, 5);
+        }
+        lastNumber = index;
+
+        // Carga el nivel
+        SceneManager.LoadScene(index);
+        Debug.Log("Scene Loaded");
     }
 }

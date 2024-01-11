@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEditor.SearchService;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,10 +14,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D boxCollider;
+    public GameController gameController;
 
     // MOVIMIENTO
     public float jumpSpeed = 8f;
-    public float walkSpeed = 4f;
+    public float walkSpeed = 3f;
     public float runSpeed = 8f;
     private float horizontal;
     private bool running = false;
@@ -28,13 +30,20 @@ public class PlayerController : MonoBehaviour
     public float Stamina = 100f;
     public float MaxStamina = 100f;
     public float RunCost = 25f;
+    public float ChargeRate = 25f;
+    private Coroutine recharge;
 
     // VIDA
     public float health = 100f;
 
+    // SKINNY LEGEND
+    private GameObject SkinnyLegend;
+    private SkinnyLegend SkinnyLegendScript;
+
     void Start()
     {
-
+        SkinnyLegend = GameObject.FindWithTag("SL");
+        SkinnyLegendScript = SkinnyLegend.GetComponent<SkinnyLegend>();
     }
 
     void Update()
@@ -66,16 +75,17 @@ public class PlayerController : MonoBehaviour
             Stamina -= RunCost * Time.deltaTime;
             if (Stamina < 0) Stamina = 0;
             StaminaBar.fillAmount = Stamina / MaxStamina;
+
+            if (recharge != null)
+            {
+                StopCoroutine(recharge);
+            }
+            recharge = StartCoroutine(RechargeStamina());
         }
         else
         {
             rb.velocity = new Vector2(horizontal * walkSpeed, rb.velocity.y);
         }
-
-    }
-
-    private void FixedUpdate()
-    {
 
     }
 
@@ -97,11 +107,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Recarga la estamina
+    private IEnumerator RechargeStamina()
+    {
+        yield return new WaitForSeconds(1);
+
+        while (Stamina < MaxStamina)
+        {
+            Stamina += ChargeRate / 10f;
+            if (Stamina > MaxStamina)
+            {
+                Stamina = MaxStamina;
+            }
+            StaminaBar.fillAmount = Stamina / MaxStamina;
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Hide"))
         {
-            if  (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log("si");
             }
@@ -109,30 +136,20 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Door"))
         {
-            LoadRandomScene();
+            gameController.GetComponent<GameController>().LoadNextRoom();
         }
 
         if (collision.gameObject.CompareTag("Drawer"))
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-
                 Debug.Log("cajon abierto");
             }
         }
-    }
 
-    void LoadRandomScene()
-    {
-        int index = UnityEngine.Random.Range(0, 4);
-        int lastNumber = 0;
-        if (index == lastNumber)
+        if (collision.gameObject.CompareTag("Active SL"))
         {
-            index = UnityEngine.Random.Range(0, 4);
+            SkinnyLegendScript.IsActive = true;
         }
-        lastNumber = index;
-
-        SceneManager.LoadScene(index);
-        Debug.Log("Scene loaded");
     }
 }

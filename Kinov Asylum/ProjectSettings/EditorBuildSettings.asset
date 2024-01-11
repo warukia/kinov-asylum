@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Room0.unity
+    guid: ff1fb759a6cbb52438233bbccc2cc37f
+  - enabled: 1
     path: Assets/Scenes/RoomA.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
@@ -17,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RoomD.unity
     guid: fa5612248d0e16c40ab0b0add9744c1b
+  - enabled: 1
+    path: Assets/Scenes/Room_SkinnyLegend.unity
+    guid: 8060f8878caa5894dafe920db16b4424
   m_configObjects: {}
