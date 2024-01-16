@@ -6,6 +6,13 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEditor.SearchService;
+using TMPro;
+
+public enum PlayerStates { Locomotion, Closet, Dialogue };
+/* Sirve para enumerar diferentes estados de un personaje. Por ejemplo a un policia, se le pueden poner
+   diferentes estados como patrullar, perseguir negros, y disparar. De esta manera podremos cambiar de
+   estado más fácilmente y nos ahorraremos bastantes booleanos.
+*/
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +22,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D boxCollider;
     public GameController gameController;
+
+    private PlayerStates currentPlayerState;
+
+    // VIDA
+    public static float health = 100f;
+
+    // NÚMERO DE LA ROOM
+    public TextMeshProUGUI RoomNumberText;
 
     // MOVIMIENTO
     public float jumpSpeed = 8f;
@@ -30,35 +45,36 @@ public class PlayerController : MonoBehaviour
     public float Stamina = 100f;
     public float MaxStamina = 100f;
     public float RunCost = 25f;
-    public float ChargeRate = 25f;
+    public float ChargeRate = 33f;
     private Coroutine recharge;
 
-    // VIDA
-    public float health = 100f;
+    // ESCONDERSE EN ARMARIO
+    private bool CanHide = false;
 
-    // SKINNY LEGEND
-    private GameObject SkinnyLegend;
-    private SkinnyLegend SkinnyLegendScript;
+    // ABRIR EL CAJÓN
+    private bool CanOpenDrawer = false;
 
     void Start()
     {
-        SkinnyLegend = GameObject.FindWithTag("SL");
-        SkinnyLegendScript = SkinnyLegend.GetComponent<SkinnyLegend>();
+        currentPlayerState = PlayerStates.Locomotion;
     }
 
-    void Update()
+    private void ProcessLocomotion()
     {
-        // Movimiento y salto del personaje.
         horizontal = Input.GetAxisRaw("Horizontal");
         Flip();
 
         // Sprint con Shift
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && (Stamina > 0))
         {
             running = true;
-            Debug.Log("wazaaaaaaaa");
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            running = false;
+        }
+
+        if (Stamina <= 0)
         {
             running = false;
         }
@@ -87,6 +103,44 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(horizontal * walkSpeed, rb.velocity.y);
         }
 
+        // ARMARIO
+        if (CanHide && (Input.GetKeyDown(KeyCode.E)))
+        {
+            // Transición de moverse a esconderse en armario.
+            rb.velocity = Vector2.zero;
+            spriteRenderer.enabled = false;
+            currentPlayerState = PlayerStates.Closet;
+        }
+
+        // CAJÓN
+        if (CanOpenDrawer && (Input.GetKeyDown(KeyCode.E)))
+        {
+            Debug.Log("tokando cajosito");
+        }
+    }
+
+    private void ProcessCloset()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            // Transición de salir del armario.
+            spriteRenderer.enabled = true;
+            currentPlayerState = PlayerStates.Locomotion;
+        }
+    }
+
+    void Update()
+    {
+        switch (currentPlayerState)
+        {
+            case PlayerStates.Locomotion:
+                ProcessLocomotion();
+                break;
+
+            case PlayerStates.Closet:
+                ProcessCloset();
+                break;
+        }
     }
 
     private bool IsGrounded()
@@ -110,7 +164,18 @@ public class PlayerController : MonoBehaviour
     // Recarga la estamina
     private IEnumerator RechargeStamina()
     {
-        yield return new WaitForSeconds(1);
+        int seconds = 1;
+
+        if (Stamina > 0)
+        {
+            seconds = 1;
+        }
+        else if (Stamina == 0)
+        {
+            seconds = 2;
+        }
+
+        yield return new WaitForSeconds(seconds);
 
         while (Stamina < MaxStamina)
         {
@@ -120,36 +185,54 @@ public class PlayerController : MonoBehaviour
                 Stamina = MaxStamina;
             }
             StaminaBar.fillAmount = Stamina / MaxStamina;
+
             yield return new WaitForSeconds(0.1f);
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Hide"))
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("si");
-            }
-        }
+        //if (collision.gameObject.CompareTag("Hide"))
+        //{
+        //    Debug.Log("Closet detected");
+
+        //    if (Input.GetKeyDown(KeyCode.E))
+        //    {
+        //        Debug.Log("si");
+        //    }
+        //}
 
         if (collision.gameObject.CompareTag("Door"))
         {
             gameController.GetComponent<GameController>().LoadNextRoom();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Hide"))
+        {
+            CanHide = true;
+            Debug.Log(CanHide);
+        }
 
         if (collision.gameObject.CompareTag("Drawer"))
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("cajon abierto");
-            }
+            CanOpenDrawer = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Hide"))
+        {
+            CanHide = false;
+            Debug.Log(CanHide);
         }
 
-        if (collision.gameObject.CompareTag("Active SL"))
+        if (collision.gameObject.CompareTag("Drawer"))
         {
-            SkinnyLegendScript.IsActive = true;
+            CanOpenDrawer = false;
         }
     }
 }

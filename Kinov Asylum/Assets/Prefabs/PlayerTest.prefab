@@ -193,5 +193,4 @@ MonoBehaviour:
   Stamina: 100
   MaxStamina: 100
   RunCost: 25
-  ChargeRate: 25
-  health: 100
+  ChargeRate: 33

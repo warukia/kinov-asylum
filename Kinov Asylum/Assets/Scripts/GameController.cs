@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     {
         StartCoroutine(LoadNextRoomCoroutine());
     }
+
     IEnumerator LoadNextRoomCoroutine()
     {
         // Iniciar animación

@@ -901,6 +901,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.214479, y: 10.496265}
   m_EdgeRadius: 0
+--- !u!114 &1390760569 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 620579425684899057, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
+  m_PrefabInstance: {fileID: 6897987566146237733}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1491723594 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6897987564949262447, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
@@ -1084,7 +1095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 6b7faa279ec6a8941bc5260118a9bba7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.59
+      value: -1.07
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 6b7faa279ec6a8941bc5260118a9bba7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1470,6 +1481,10 @@ PrefabInstance:
       propertyPath: StaminaBar
       value: 
       objectReference: {fileID: 1491723594}
+    - target: {fileID: 2335893623476235859, guid: 065f668a18253674fa70666de9e1b722, type: 3}
+      propertyPath: RoomNumberText
+      value: 
+      objectReference: {fileID: 1390760569}
     - target: {fileID: 2335893623476235859, guid: 065f668a18253674fa70666de9e1b722, type: 3}
       propertyPath: gameController
       value: 
