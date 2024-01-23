@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor.SearchService;
 using TMPro;
 
-public enum PlayerStates { Locomotion, Closet, Dialogue };
+public enum PlayerStates { Locomotion, Closet, Dialogue, Death };
 /* Sirve para enumerar diferentes estados de un personaje. Por ejemplo a un policia, se le pueden poner
    diferentes estados como patrullar, perseguir negros, y disparar. De esta manera podremos cambiar de
    estado más fácilmente y nos ahorraremos bastantes booleanos.
@@ -26,10 +26,11 @@ public class PlayerController : MonoBehaviour
     private PlayerStates currentPlayerState;
 
     // VIDA
-    public static float health = 100f;
+    public float damageTaken;
+    private static float health = 100f;
+    public TextMeshProUGUI HealthTextUI;
+    private Canvas canvas;
 
-    // NÚMERO DE LA ROOM
-    public TextMeshProUGUI RoomNumberText;
 
     // MOVIMIENTO
     public float jumpSpeed = 8f;
@@ -54,10 +55,18 @@ public class PlayerController : MonoBehaviour
     // ABRIR EL CAJÓN
     private bool CanOpenDrawer = false;
 
+
+
     void Start()
     {
         currentPlayerState = PlayerStates.Locomotion;
+
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        HealthTextUI = canvas.transform.Find("Health").GetComponent<TextMeshProUGUI>();
+
     }
+
+
 
     private void ProcessLocomotion()
     {
@@ -117,7 +126,15 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("tokando cajosito");
         }
+
+        // MUERTE
+        if (health == 0)
+        {
+            rb.velocity = Vector2.zero;
+            currentPlayerState = PlayerStates.Death;
+        }
     }
+
 
     private void ProcessCloset()
     {
@@ -127,6 +144,17 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.enabled = true;
             currentPlayerState = PlayerStates.Locomotion;
         }
+    }
+
+    private IEnumerator ProcessDeath()
+    {
+        int seconds = 2;
+
+        yield return new WaitForSeconds(seconds);
+
+        SceneManager.LoadScene("GameOver");
+        health = 100f;
+        currentPlayerState = PlayerStates.Locomotion;
     }
 
     void Update()
@@ -140,14 +168,24 @@ public class PlayerController : MonoBehaviour
             case PlayerStates.Closet:
                 ProcessCloset();
                 break;
+
+            case PlayerStates.Death:
+                StartCoroutine(ProcessDeath());
+                break;
         }
+
+        HealthTextUI.text = health.ToString();
     }
+
+
 
     private bool IsGrounded()
     {
         // Cuando está en colisión con el suelo nos permite saltar.
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
+
+
 
     private void Flip()
     {
@@ -160,6 +198,8 @@ public class PlayerController : MonoBehaviour
             transform.localScale = localScale;
         }
     }
+
+
 
     // Recarga la estamina
     private IEnumerator RechargeStamina()
@@ -190,23 +230,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        //if (collision.gameObject.CompareTag("Hide"))
-        //{
-        //    Debug.Log("Closet detected");
 
-        //    if (Input.GetKeyDown(KeyCode.E))
-        //    {
-        //        Debug.Log("si");
-        //    }
-        //}
 
-        if (collision.gameObject.CompareTag("Door"))
-        {
-            gameController.GetComponent<GameController>().LoadNextRoom();
-        }
-    }
+
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -220,19 +248,42 @@ public class PlayerController : MonoBehaviour
         {
             CanOpenDrawer = true;
         }
+
+        if (collision.gameObject.CompareTag("Door"))
+        {
+            RoomCounter doorScript = collision.GetComponent<RoomCounter>();
+            doorScript.RoomUpdater++;
+            gameController.GetComponent<GameController>().LoadNextRoom();
+        }
+
+        if (collision.gameObject.CompareTag("Poulette") && (currentPlayerState == PlayerStates.Locomotion))
+        {
+            TakeDamage(100);
+        }
     }
+
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Hide"))
         {
             CanHide = false;
-            Debug.Log(CanHide);
         }
 
         if (collision.gameObject.CompareTag("Drawer"))
         {
             CanOpenDrawer = false;
         }
+    }
+
+
+
+
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        Debug.Log($"Took {damage} points of damage and Yuliya's health is {health}.");
     }
 }

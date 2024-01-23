@@ -9,6 +9,9 @@ public class GameController : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
+    private int numA = 2;
+    private int numB = 7;
+
     void Update()
     {
         
@@ -29,11 +32,11 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
 
         // Calcular el nivel que cargará
-        int index = Random.Range(1, 5);
+        int index = Random.Range(numA, numB);
         int lastNumber = 0;
         if (index == lastNumber)
         {
-            index = Random.Range(1, 5);
+            index = Random.Range(numA, numB);
         }
         lastNumber = index;
 
