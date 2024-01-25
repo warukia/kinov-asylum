@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor.SearchService;
 using TMPro;
 
-public enum PlayerStates { Locomotion, Closet, Dialogue, Death };
+public enum PlayerStates { Locomotion, Closet, Dialogue, Death, CantMoveSL };
 /* Sirve para enumerar diferentes estados de un personaje. Por ejemplo a un policia, se le pueden poner
    diferentes estados como patrullar, perseguir negros, y disparar. De esta manera podremos cambiar de
    estado más fácilmente y nos ahorraremos bastantes booleanos.
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     public Image StaminaBar;
     public float Stamina = 100f;
     public float MaxStamina = 100f;
-    public float RunCost = 25f;
+    public float RunCost = 40f;
     public float ChargeRate = 33f;
     private Coroutine recharge;
 
@@ -55,7 +55,8 @@ public class PlayerController : MonoBehaviour
     // ABRIR EL CAJÓN
     private bool CanOpenDrawer = false;
 
-
+    // OTROS
+    private bool SLActivate = false;
 
     void Start()
     {
@@ -133,6 +134,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.zero;
             currentPlayerState = PlayerStates.Death;
         }
+
     }
 
 
@@ -144,6 +146,16 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.enabled = true;
             currentPlayerState = PlayerStates.Locomotion;
         }
+    }
+
+    private IEnumerator ProcessCantMoveSL()
+    {
+        // Se queda quieta mientras se reproduce la cinemática de Skinny Legend
+        currentPlayerState = PlayerStates.CantMoveSL;
+        int SLcinematicSeconds = 5;
+        rb.velocity = Vector2.zero;
+        yield return new WaitForSeconds(SLcinematicSeconds);
+        currentPlayerState = PlayerStates.Locomotion;
     }
 
     private IEnumerator ProcessDeath()
@@ -159,6 +171,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(currentPlayerState);
+        
         switch (currentPlayerState)
         {
             case PlayerStates.Locomotion:
@@ -184,8 +198,6 @@ public class PlayerController : MonoBehaviour
         // Cuando está en colisión con el suelo nos permite saltar.
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
-
-
 
     private void Flip()
     {
@@ -259,6 +271,11 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Poulette") && (currentPlayerState == PlayerStates.Locomotion))
         {
             TakeDamage(100);
+        }
+
+        if (collision.gameObject.CompareTag("Active SL"))
+        {
+            StartCoroutine(ProcessCantMoveSL());
         }
     }
 
