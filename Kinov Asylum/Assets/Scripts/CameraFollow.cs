@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] float FollowSpeed = 2f;
-    public Transform target;
+    private Transform target;
+
+    private void Start()
+    {
+        target = GameObject.Find("Player").GetComponent<Transform>();
+    }
 
     void Update()
     {

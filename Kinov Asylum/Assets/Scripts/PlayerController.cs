@@ -35,8 +35,8 @@ public class PlayerController : MonoBehaviour
 
     // MOVIMIENTO
     public float jumpSpeed = 8f;
-    public float walkSpeed = 3f;
-    public float runSpeed = 8f;
+    public float walkSpeed = 2f;
+    public float runSpeed = 7f;
     private float horizontal;
     private bool running = false;
     private bool isFacingRight = true;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     public Image StaminaBar;
     public float Stamina = 100f;
     public float MaxStamina = 100f;
-    public float RunCost = 40f;
+    public float RunCost = 50f;
     public float ChargeRate = 33f;
     private Coroutine recharge;
 
@@ -253,7 +253,6 @@ public class PlayerController : MonoBehaviour
         {
             // Vuelve a permitir que vaya atrás
             CanGoBack = true;
-
 
             roomCounter.RoomUpdater++;
             roomCounter.CalculateRoomIndex(0);

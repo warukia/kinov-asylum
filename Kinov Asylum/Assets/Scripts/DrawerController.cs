@@ -18,7 +18,7 @@ public class DrawerController : MonoBehaviour
     public bool IsActive;
 
     private bool CanOpenDrawer = false;
-
+    private bool isOpened = false;
 
 
     void Start()
@@ -30,9 +30,15 @@ public class DrawerController : MonoBehaviour
     {
         if (CanOpenDrawer)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && isOpened == false)
             {
+                isOpened = true;
                 DrawerState(true);
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && isOpened == true)
+            {
+                isOpened = false;
+                DrawerState(false);
             }
         }
         else

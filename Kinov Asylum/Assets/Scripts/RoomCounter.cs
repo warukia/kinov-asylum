@@ -57,10 +57,11 @@ public class RoomCounter : MonoBehaviour
                 }
                 while (indiceRoomSiguiente == indiceRoomActual || indiceRoomSiguiente == indiceRoomAnterior);
 
+
                 indiceRoomAnterior = SceneManager.GetActiveScene().buildIndex;
                 indiceRoomActual = indiceRoomSiguiente;
 
-                Debug.Log("Anterior" + indiceRoomAnterior + " Siguiente " + indiceRoomSiguiente);
+                Debug.Log($"Room anterior: {indiceRoomAnterior} \nSiguiente room: {indiceRoomSiguiente}");
 
                 gameController.LoadNextRoom(indiceRoomSiguiente);
             }
@@ -73,6 +74,9 @@ public class RoomCounter : MonoBehaviour
         else if (num == 1) // RETROCEDER
         {
             isInActualRoom = false;
+
+            Debug.Log($"Room actual: {indiceRoomActual}\nRoom anterior donde entramos: {indiceRoomAnterior}");
+
             gameController.LoadNextRoom(indiceRoomAnterior);
         }
 
@@ -87,7 +91,6 @@ public class RoomCounter : MonoBehaviour
         {
             RoomNumberTextUI.text = "Room " + RoomNumber.ToString();
         }
-
 
     }
 }
