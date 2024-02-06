@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Poulette : MonoBehaviour
 {
+    // El flickering de las luces está incorporado en el Animator.
+
     [SerializeField] private Transform trns;
     private bool isActive = false;
     private float speed = 20f;
     private int seconds;
 
-    // SONIDO
-    
 
     void Start()
     {
