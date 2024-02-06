@@ -1,27 +1,102 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoomCounter : MonoBehaviour
 {
-    public float RoomUpdater;
-    private static float RoomNumber; 
+    public GameController gameController;
+
+    // DETECTAR PUERTA
+    private GameObject DoorObject;
+    private GameObject BackDoor;
+
+    // NÚMERO DE ROOM
+    private int numA = 3;
+    private int numB = 7;
+    public float RoomUpdater; // Float que actualiza la room
+
+    // UI
+    private Canvas canvas;
     public TextMeshProUGUI RoomNumberTextUI;
+    private static float RoomNumber; // Número room actual (el que aparece en la UI)
+
+
+    // ÍNDICES DE LAS ROOMS
+    public static int indiceRoomActual;
+    public static int indiceRoomAnterior;
+    public int indiceRoomSiguiente;
+
+    public static bool isInActualRoom;
 
     void Start()
     {
-        RoomUpdater = RoomNumber;
+        // Obtiene el GameController para poder llamar al método
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+
+        // UI
+        if (GameObject.Find("Canvas") != null)
+        {
+            canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+            RoomNumberTextUI = canvas.transform.Find("Room number").GetComponent<TextMeshProUGUI>();
+            RoomUpdater = RoomNumber;
+        }
+
+        // Guarda el índice actual y la room anterior cuando avanza
+        // SOLO si cuando avanza isInActualRoom = true.
+
+        //if (isInActualRoom)
+        //{
+        //    indiceRoomAnterior = indiceRoomActual;
+        //    indiceRoomActual = SceneManager.GetActiveScene().buildIndex;
+        //}
+    }
+
+    public void CalculateRoomIndex(int num)
+    {
+        if (num == 0) // AVANZAR
+        {
+            if (isInActualRoom)
+            {
+                do
+                {
+                    indiceRoomSiguiente = UnityEngine.Random.Range(numA, numB);
+                }
+                while (indiceRoomSiguiente == indiceRoomActual || indiceRoomSiguiente == indiceRoomAnterior);
+
+                indiceRoomAnterior = SceneManager.GetActiveScene().buildIndex;
+                indiceRoomActual = indiceRoomSiguiente;
+
+                Debug.Log("Anterior" + indiceRoomAnterior + " Siguiente " + indiceRoomSiguiente);
+
+                gameController.LoadNextRoom(indiceRoomSiguiente);
+            }
+            else
+            {
+                isInActualRoom = true;
+                gameController.LoadNextRoom(indiceRoomActual);
+            }
+        }
+        else if (num == 1) // RETROCEDER
+        {
+            isInActualRoom = false;
+            gameController.LoadNextRoom(indiceRoomAnterior);
+        }
+
     }
 
     void Update()
     {
+        // UI
         RoomNumber = RoomUpdater;
-        RoomNumberTextUI.text = "Room " + RoomNumber.ToString();
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
+        if (RoomNumberTextUI != null)
+        {
+            RoomNumberTextUI.text = "Room " + RoomNumber.ToString();
+        }
+
 
     }
 }

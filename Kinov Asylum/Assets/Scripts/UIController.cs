@@ -13,6 +13,8 @@ public class UIController : MonoBehaviour
 
     public void StartGame()
     {
+        RoomCounter.isInActualRoom = true;
+        RoomCounter.indiceRoomActual = RoomCounter.indiceRoomAnterior = 0;
         SceneManager.LoadScene("Room0");
     }
 }

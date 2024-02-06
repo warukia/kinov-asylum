@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D boxCollider;
     public GameController gameController;
+    public RoomCounter roomController;
 
     private PlayerStates currentPlayerState;
 
@@ -41,6 +42,12 @@ public class PlayerController : MonoBehaviour
     private bool isFacingRight = true;
     //private bool isHiding = false;
 
+    // MOVIMIENTO ENTRE ROOMS
+    private GameObject door;
+    private RoomCounter roomCounter;
+
+
+
     // STAMINA
     public Image StaminaBar;
     public float Stamina = 100f;
@@ -52,22 +59,25 @@ public class PlayerController : MonoBehaviour
     // ESCONDERSE EN ARMARIO
     private bool CanHide = false;
 
-    // ABRIR EL CAJÓN
-    private bool CanOpenDrawer = false;
 
     // OTROS
+    private static bool CanGoBack;
     private bool SLActivate = false;
+
 
     void Start()
     {
         currentPlayerState = PlayerStates.Locomotion;
 
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         HealthTextUI = canvas.transform.Find("Health").GetComponent<TextMeshProUGUI>();
 
+        //door = GameObject.Find("Door");
+        //roomCounter = door.GetComponent<RoomCounter>();
+        roomCounter = GameObject.Find("GameController").GetComponent<RoomCounter>();
     }
-
-
 
     private void ProcessLocomotion()
     {
@@ -122,12 +132,6 @@ public class PlayerController : MonoBehaviour
             currentPlayerState = PlayerStates.Closet;
         }
 
-        // CAJÓN
-        if (CanOpenDrawer && (Input.GetKeyDown(KeyCode.E)))
-        {
-            Debug.Log("tokando cajosito");
-        }
-
         // MUERTE
         if (health == 0)
         {
@@ -136,7 +140,6 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
 
     private void ProcessCloset()
     {
@@ -170,9 +173,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {
-        Debug.Log(currentPlayerState);
-        
+    {        
         switch (currentPlayerState)
         {
             case PlayerStates.Locomotion:
@@ -190,8 +191,6 @@ public class PlayerController : MonoBehaviour
 
         HealthTextUI.text = health.ToString();
     }
-
-
 
     private bool IsGrounded()
     {
@@ -211,9 +210,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
-    // Recarga la estamina
     private IEnumerator RechargeStamina()
     {
         int seconds = 1;
@@ -242,37 +238,44 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
-
-
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // ESCONDERSE EN ARMARIOS
         if (collision.gameObject.CompareTag("Hide"))
         {
             CanHide = true;
             Debug.Log(CanHide);
         }
 
-        if (collision.gameObject.CompareTag("Drawer"))
-        {
-            CanOpenDrawer = true;
-        }
 
+        // MOVERSE ENTRE ROOMS
         if (collision.gameObject.CompareTag("Door"))
         {
-            RoomCounter doorScript = collision.GetComponent<RoomCounter>();
-            doorScript.RoomUpdater++;
-            gameController.GetComponent<GameController>().LoadNextRoom();
+            // Vuelve a permitir que vaya atrás
+            CanGoBack = true;
+
+
+            roomCounter.RoomUpdater++;
+            roomCounter.CalculateRoomIndex(0);
+        }
+        
+        if (collision.gameObject.CompareTag("BackDoor") && CanGoBack)
+        {
+            // No permite que vaya atrás
+            CanGoBack = false;
+
+            roomCounter.RoomUpdater--;
+            roomCounter.CalculateRoomIndex(1);
         }
 
+        // POULETTE
         if (collision.gameObject.CompareTag("Poulette") && (currentPlayerState == PlayerStates.Locomotion))
         {
             TakeDamage(100);
         }
 
+
+        // SKINNY LEGEND
         if (collision.gameObject.CompareTag("Active SL"))
         {
             StartCoroutine(ProcessCantMoveSL());
@@ -286,11 +289,6 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Hide"))
         {
             CanHide = false;
-        }
-
-        if (collision.gameObject.CompareTag("Drawer"))
-        {
-            CanOpenDrawer = false;
         }
     }
 

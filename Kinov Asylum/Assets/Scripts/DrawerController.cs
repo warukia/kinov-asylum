@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DrawerController : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class DrawerController : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     private SpriteRenderer openDrawerRenderer;
-   
+
     public Transform PlayerPos;
 
     public bool IsActive;
@@ -29,13 +30,23 @@ public class DrawerController : MonoBehaviour
     {
         if (CanOpenDrawer)
         {
-            OpenDrawer();
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                DrawerState(true);
+            }
+        }
+        else
+        {
+            DrawerState(false);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) CanOpenDrawer = true;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            CanOpenDrawer = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -43,8 +54,8 @@ public class DrawerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")) CanOpenDrawer = false;
     }
 
-    public void OpenDrawer()
+    public void DrawerState(bool open)
     {
-        openDrawerRenderer.enabled = true;
+        openDrawerRenderer.enabled = open;
     }
 }

@@ -14,7 +14,7 @@ public class Poulette : MonoBehaviour
 
     void Start()
     {
-        seconds = Random.Range(4, 9);
+        seconds = Random.Range(2, 5);
         StartCoroutine(Appear(seconds));
     }
 

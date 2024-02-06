@@ -9,21 +9,13 @@ public class GameController : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
-    private int numA = 2;
-    private int numB = 7;
-
-    void Update()
+    // Carga una room con una transición negra.
+    public void LoadNextRoom(int roomIndex)
     {
-        
+        StartCoroutine(LoadNextRoomCoroutine(roomIndex));
     }
 
-    // CARGAR SIGUIENTE ROOM ALEATORIAMENTE
-    public void LoadNextRoom()
-    {
-        StartCoroutine(LoadNextRoomCoroutine());
-    }
-
-    IEnumerator LoadNextRoomCoroutine()
+    IEnumerator LoadNextRoomCoroutine(int roomIndex)
     {
         // Iniciar animación
         transition.SetTrigger("Start");
@@ -31,17 +23,8 @@ public class GameController : MonoBehaviour
         // Espera un poco
         yield return new WaitForSeconds(transitionTime);
 
-        // Calcular el nivel que cargará
-        int index = Random.Range(numA, numB);
-        int lastNumber = 0;
-        if (index == lastNumber)
-        {
-            index = Random.Range(numA, numB);
-        }
-        lastNumber = index;
-
         // Carga el nivel
-        SceneManager.LoadScene(index);
+        SceneManager.LoadScene(roomIndex);
         Debug.Log("Scene Loaded");
     }
 }
