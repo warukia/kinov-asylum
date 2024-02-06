@@ -43,20 +43,11 @@ public class RoomCounter : MonoBehaviour
             RoomNumberTextUI = canvas.transform.Find("Room number").GetComponent<TextMeshProUGUI>();
             RoomUpdater = RoomNumber;
         }
-
-        // Guarda el índice actual y la room anterior cuando avanza
-        // SOLO si cuando avanza isInActualRoom = true.
-
-        //if (isInActualRoom)
-        //{
-        //    indiceRoomAnterior = indiceRoomActual;
-        //    indiceRoomActual = SceneManager.GetActiveScene().buildIndex;
-        //}
     }
 
     public void CalculateRoomIndex(int num)
     {
-        if (num == 0) // AVANZAR
+        if (num == 0) // AVANZAR DE ROOM
         {
             if (isInActualRoom)
             {
