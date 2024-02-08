@@ -1001,6 +1001,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 178722600524219106, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 178722600524219106, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d503c49d05077f44aa32fc2ed893dda, type: 3}
+    - target: {fileID: 178722600524219106, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 178722600524219106, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 178722600524219106, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5913688441320377433, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1101,6 +1121,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8568520405427874047, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 152.7567
+      objectReference: {fileID: 0}
+    - target: {fileID: 8568520405427874047, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 99.409
+      objectReference: {fileID: 0}
+    - target: {fileID: 8568520405427874047, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -68.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8568520405427874047, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -24.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
 --- !u!114 &5573756867634461898 stripped
@@ -1145,7 +1181,7 @@ Animator:
   m_GameObject: {fileID: 5573756867634461901}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c8da49b225db57147a8d3f5ea23fcfef, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
