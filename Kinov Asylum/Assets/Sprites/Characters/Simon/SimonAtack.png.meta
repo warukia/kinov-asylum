@@ -43,7 +43,7 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 0
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -145,9 +145,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 936
-        width: 945
-        height: 936
+        y: 736
+        width: 345
+        height: 736
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,8 +155,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44ff1fcc3b340b844a408187eaf4ff36
-      internalID: -1062828259
+      spriteID: 184a7b8fb152325468a0b5fba0cb9e98
+      internalID: 1253058738
       vertices: []
       indices: 
       edges: []
@@ -165,10 +165,10 @@ TextureImporter:
       name: SimonAtack_1
       rect:
         serializedVersion: 2
-        x: 945
-        y: 936
-        width: 945
-        height: 936
+        x: 345
+        y: 736
+        width: 345
+        height: 736
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,8 +176,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df789a8c2860a0c498a4be0e0701d938
-      internalID: -2009900946
+      spriteID: 3261371d0ff07ae4c98f2a16475fe089
+      internalID: 1948620191
       vertices: []
       indices: 
       edges: []
@@ -186,10 +186,10 @@ TextureImporter:
       name: SimonAtack_2
       rect:
         serializedVersion: 2
-        x: 1890
-        y: 936
-        width: 945
-        height: 936
+        x: 690
+        y: 736
+        width: 345
+        height: 736
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,8 +197,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a03d06cbc7ddcf24b828d2b7d7e52029
-      internalID: 985421172
+      spriteID: 8cb45c0ec580b5c4099376bf4a6f2b69
+      internalID: -1758027200
       vertices: []
       indices: 
       edges: []
@@ -207,10 +207,10 @@ TextureImporter:
       name: SimonAtack_3
       rect:
         serializedVersion: 2
-        x: 2835
-        y: 936
-        width: 945
-        height: 936
+        x: 1035
+        y: 736
+        width: 345
+        height: 736
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,8 +218,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: beb38f79831523547a10d35383faa9b7
-      internalID: 1784886756
+      spriteID: 08fddb5dc388a6349807ae0a440097b1
+      internalID: 1770993541
       vertices: []
       indices: 
       edges: []
@@ -228,10 +228,10 @@ TextureImporter:
       name: SimonAtack_4
       rect:
         serializedVersion: 2
-        x: 3780
-        y: 936
-        width: 945
-        height: 936
+        x: 1380
+        y: 736
+        width: 345
+        height: 736
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,8 +239,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 683bb646fa71d334d99b25e95d20d9b8
-      internalID: 208393445
+      spriteID: 1be2408f56d7f46419a11ddfdf081eae
+      internalID: 1029194472
       vertices: []
       indices: 
       edges: []
@@ -249,10 +249,10 @@ TextureImporter:
       name: SimonAtack_5
       rect:
         serializedVersion: 2
-        x: 4725
-        y: 936
-        width: 945
-        height: 936
+        x: 1725
+        y: 736
+        width: 345
+        height: 736
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,8 +260,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 616c9904196b56c4191db21968ae7c4a
-      internalID: 972053420
+      spriteID: d082a51909dad044d9dfe6c0bc59e4d1
+      internalID: -1818853933
       vertices: []
       indices: 
       edges: []
@@ -270,10 +270,10 @@ TextureImporter:
       name: SimonAtack_6
       rect:
         serializedVersion: 2
-        x: 5670
-        y: 936
-        width: 945
-        height: 936
+        x: 2070
+        y: 736
+        width: 345
+        height: 736
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,8 +281,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cceef8e6aea3afd4b90771192a7e3531
-      internalID: -277541309
+      spriteID: 0e06a9a712e0b364aa143eca80afcb22
+      internalID: -1634231885
       vertices: []
       indices: 
       edges: []
@@ -293,8 +293,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 945
-        height: 936
+        width: 345
+        height: 736
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,8 +302,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d682f5e084b65b45b696b60afde35c9
-      internalID: -1692169442
+      spriteID: e12645c3c199295468a55a16e6f95f54
+      internalID: 1459478570
       vertices: []
       indices: 
       edges: []
@@ -312,10 +312,10 @@ TextureImporter:
       name: SimonAtack_8
       rect:
         serializedVersion: 2
-        x: 945
+        x: 345
         y: 0
-        width: 945
-        height: 936
+        width: 345
+        height: 736
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,8 +323,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0bb6f63523b66a14089e441e0b9a5794
-      internalID: 210123042
+      spriteID: a06d79f395816b24fbc40ba44cf8a726
+      internalID: -1311828380
       vertices: []
       indices: 
       edges: []
@@ -333,10 +333,10 @@ TextureImporter:
       name: SimonAtack_9
       rect:
         serializedVersion: 2
-        x: 1890
+        x: 690
         y: 0
-        width: 945
-        height: 936
+        width: 345
+        height: 736
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,8 +344,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ef329e4f7f8eaf479e31e8fdc6f7127
-      internalID: 121998945
+      spriteID: 11c02c01f18633f4e9dbae0a540a42a2
+      internalID: 2135698609
       vertices: []
       indices: 
       edges: []
@@ -354,10 +354,10 @@ TextureImporter:
       name: SimonAtack_10
       rect:
         serializedVersion: 2
-        x: 2835
+        x: 1035
         y: 0
-        width: 945
-        height: 936
+        width: 345
+        height: 736
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,8 +365,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c888bc93d5b34fa469318b101e1c7d60
-      internalID: 1716359166
+      spriteID: 4882edc2e38b44f439254ee00676f23a
+      internalID: -684488771
       vertices: []
       indices: 
       edges: []
@@ -375,10 +375,10 @@ TextureImporter:
       name: SimonAtack_11
       rect:
         serializedVersion: 2
-        x: 3780
+        x: 1380
         y: 0
-        width: 945
-        height: 936
+        width: 345
+        height: 736
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -386,8 +386,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61ea0a0dd9376de4c983e1b7d5542d5c
-      internalID: 1700552354
+      spriteID: 5ed5f80be69ea4d4582c8c75274acfa8
+      internalID: -1930806724
       vertices: []
       indices: 
       edges: []
@@ -396,10 +396,10 @@ TextureImporter:
       name: SimonAtack_12
       rect:
         serializedVersion: 2
-        x: 4725
+        x: 1725
         y: 0
-        width: 945
-        height: 936
+        width: 345
+        height: 736
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -407,8 +407,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 710e4b0e9b6f71d45ad865cb4b1b9cd3
-      internalID: -1560758729
+      spriteID: 9ce59a1d55e2b8548b56f5fe6bd4308c
+      internalID: -1994648498
       vertices: []
       indices: 
       edges: []
@@ -417,10 +417,10 @@ TextureImporter:
       name: SimonAtack_13
       rect:
         serializedVersion: 2
-        x: 5670
+        x: 2070
         y: 0
-        width: 945
-        height: 936
+        width: 345
+        height: 736
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -428,8 +428,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16e69b2a2185e9b489494ce2f1475879
-      internalID: -206125584
+      spriteID: 13cfca92643174548b2404963a419348
+      internalID: 299503032
       vertices: []
       indices: 
       edges: []
@@ -445,20 +445,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SimonAtack_7: -1692169442
-      SimonAtack_12: -1560758729
-      SimonAtack_2: 985421172
-      SimonAtack_4: 208393445
-      SimonAtack_5: 972053420
-      SimonAtack_1: -2009900946
-      SimonAtack_6: -277541309
-      SimonAtack_13: -206125584
-      SimonAtack_11: 1700552354
-      SimonAtack_3: 1784886756
-      SimonAtack_0: -1062828259
-      SimonAtack_8: 210123042
-      SimonAtack_10: 1716359166
-      SimonAtack_9: 121998945
+      SimonAtack_7: 1459478570
+      SimonAtack_12: -1994648498
+      SimonAtack_2: -1758027200
+      SimonAtack_4: 1029194472
+      SimonAtack_5: -1818853933
+      SimonAtack_1: 1948620191
+      SimonAtack_6: -1634231885
+      SimonAtack_13: 299503032
+      SimonAtack_11: -1930806724
+      SimonAtack_3: 1770993541
+      SimonAtack_0: 1253058738
+      SimonAtack_8: -1311828380
+      SimonAtack_10: -684488771
+      SimonAtack_9: 2135698609
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
