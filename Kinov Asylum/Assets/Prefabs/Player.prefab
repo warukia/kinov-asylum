@@ -187,6 +187,7 @@ MonoBehaviour:
     m_Bits: 64
   spriteRenderer: {fileID: 2335893623476235862}
   boxCollider: {fileID: 2335893623476235856}
+  animator: {fileID: 5466038778649636773}
   gameController: {fileID: 0}
   roomController: {fileID: 0}
   damageTaken: 0

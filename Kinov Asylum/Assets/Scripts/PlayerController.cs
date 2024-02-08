@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private Animator animator;
     public GameController gameController;
     public RoomCounter roomController;
 
@@ -105,22 +106,35 @@ public class PlayerController : MonoBehaviour
         }
 
         // Movimiento del personaje (caminar y esprintar).
-        if (running && (horizontal != 0 || Input.GetAxisRaw("Vertical") != 0))
+        if (horizontal != 0)
         {
-            rb.velocity = new Vector2(horizontal * runSpeed, rb.velocity.y);
-            Stamina -= RunCost * Time.deltaTime;
-            if (Stamina < 0) Stamina = 0;
-            StaminaBar.fillAmount = Stamina / MaxStamina;
+            animator.SetBool("isWalkingHash", true);
 
-            if (recharge != null)
+            if (running && (horizontal != 0 || Input.GetAxisRaw("Vertical") != 0))
             {
-                StopCoroutine(recharge);
+                animator.SetBool("isRunningHash", true);
+                rb.velocity = new Vector2(horizontal * runSpeed, rb.velocity.y);
+                Stamina -= RunCost * Time.deltaTime;
+                if (Stamina < 0) Stamina = 0;
+                StaminaBar.fillAmount = Stamina / MaxStamina;
+
+                if (recharge != null)
+                {
+                    StopCoroutine(recharge);
+                }
+                recharge = StartCoroutine(RechargeStamina());
             }
-            recharge = StartCoroutine(RechargeStamina());
+            else
+            {
+                animator.SetBool("isRunningHash", false);
+                rb.velocity = new Vector2(horizontal * walkSpeed, rb.velocity.y);
+            }
         }
         else
         {
             rb.velocity = new Vector2(horizontal * walkSpeed, rb.velocity.y);
+            animator.SetBool("isWalkingHash", false);
+            animator.SetBool("isRunningHash", false);
         }
 
         // ARMARIO
@@ -135,6 +149,7 @@ public class PlayerController : MonoBehaviour
         // MUERTE
         if (health == 0)
         {
+            animator.SetBool("Die", true);
             rb.velocity = Vector2.zero;
             currentPlayerState = PlayerStates.Death;
         }
@@ -173,7 +188,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {        
+    {
         switch (currentPlayerState)
         {
             case PlayerStates.Locomotion:
@@ -244,7 +259,6 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Hide"))
         {
             CanHide = true;
-            Debug.Log(CanHide);
         }
 
 
@@ -257,7 +271,7 @@ public class PlayerController : MonoBehaviour
             roomCounter.RoomUpdater++;
             roomCounter.CalculateRoomIndex(0);
         }
-        
+
         if (collision.gameObject.CompareTag("BackDoor") && CanGoBack)
         {
             // No permite que vaya atrás
