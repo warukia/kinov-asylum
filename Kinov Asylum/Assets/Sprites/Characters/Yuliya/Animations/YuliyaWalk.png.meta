@@ -44,7 +44,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 0
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -145,18 +145,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 1591
         width: 678
         height: 1591
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87b141c02ac1cef49850e263ebc2b911
-      internalID: -580078207
+      spriteID: e68567001397e7943a1cb3040fa14cb9
+      internalID: 1200091784
       vertices: []
       indices: 
       edges: []
@@ -166,18 +166,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 678
-        y: 0
+        y: 1598
         width: 678
-        height: 1591
+        height: 1584
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2d0db24d8ee6ef4c81946c7ddb49cd5
-      internalID: -1129196731
+      spriteID: 64c7f22f91bc2494c93aad5596fe924d
+      internalID: 1689811618
       vertices: []
       indices: 
       edges: []
@@ -187,18 +187,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1356
-        y: 0
+        y: 1598
         width: 678
-        height: 1591
+        height: 1584
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa1a0949e340518488872f2e1c9bd8a6
-      internalID: 1056431036
+      spriteID: 474059aea58ba7142a35479eac7f556e
+      internalID: 1740890110
       vertices: []
       indices: 
       edges: []
@@ -207,19 +207,19 @@ TextureImporter:
       name: YuliyaWalk_3
       rect:
         serializedVersion: 2
-        x: 2034
-        y: 0
-        width: 678
-        height: 1591
+        x: 2037
+        y: 1599
+        width: 682
+        height: 1583
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee941f259e442d945b2345d2ce29dbfd
-      internalID: -1721570078
+      spriteID: c4ec775d7e2c6e449b2f6d48bb1a347a
+      internalID: 353299637
       vertices: []
       indices: 
       edges: []
@@ -229,18 +229,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2712
-        y: 0
-        width: 678
-        height: 1591
+        y: 1606
+        width: 673
+        height: 1576
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d049b4ded4609e245af5319b86de92fd
-      internalID: 1737102613
+      spriteID: 1d08abb2ad7134b47b64be420a84b105
+      internalID: 372786588
       vertices: []
       indices: 
       edges: []
@@ -250,18 +250,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3390
-        y: 0
-        width: 678
-        height: 1591
+        y: 1612
+        width: 677
+        height: 1570
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f7b25c9ff7c7bd47add2316b7c4c0e0
-      internalID: -960669668
+      spriteID: 1381e7454a3b8ac499b4c7715e23635b
+      internalID: 1873435657
       vertices: []
       indices: 
       edges: []
@@ -271,18 +271,165 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4068
-        y: 0
+        y: 1618
         width: 678
-        height: 1591
+        height: 1564
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 277f5804b57e3dc42b8180f0f1dac068
-      internalID: 512793916
+      spriteID: d590d8cf4d7bc9042a7927ba6fa3b3a9
+      internalID: 1733747289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YuliyaWalk_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 675
+        height: 1591
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bce8202a25bd41343b1aa5f60fe3738f
+      internalID: 86793906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YuliyaWalk_8
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 0
+        width: 678
+        height: 1591
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a162321264ac85846bc151f0ed6b0959
+      internalID: 1338067412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YuliyaWalk_9
+      rect:
+        serializedVersion: 2
+        x: 1356
+        y: 0
+        width: 678
+        height: 1591
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 287d735d9362e1e4ab0506f8b453e3b0
+      internalID: 855362194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YuliyaWalk_10
+      rect:
+        serializedVersion: 2
+        x: 2034
+        y: 0
+        width: 678
+        height: 1591
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd12955f30d3c6f48b3629f7a23286bd
+      internalID: 1249699381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YuliyaWalk_11
+      rect:
+        serializedVersion: 2
+        x: 2712
+        y: 0
+        width: 678
+        height: 1591
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cb1cec6f675dd049b4ff8c4368d053d
+      internalID: 1238247537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YuliyaWalk_12
+      rect:
+        serializedVersion: 2
+        x: 3390
+        y: 0
+        width: 678
+        height: 1591
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63bfd04e794ea2e4ba7edc8ad7a634d6
+      internalID: 1333991515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YuliyaWalk_13
+      rect:
+        serializedVersion: 2
+        x: 4068
+        y: 0
+        width: 678
+        height: 1591
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1df7ab7cb628634a8d12d9334e837cb
+      internalID: 1594366737
       vertices: []
       indices: 
       edges: []
@@ -298,13 +445,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      YuliyaWalk_4: 1737102613
-      YuliyaWalk_0: -580078207
-      YuliyaWalk_1: -1129196731
-      YuliyaWalk_6: 512793916
-      YuliyaWalk_3: -1721570078
-      YuliyaWalk_2: 1056431036
-      YuliyaWalk_5: -960669668
+      YuliyaWalk_9: 855362194
+      YuliyaWalk_8: 1338067412
+      YuliyaWalk_4: 372786588
+      YuliyaWalk_0: 1200091784
+      YuliyaWalk_13: 1594366737
+      YuliyaWalk_12: 1333991515
+      YuliyaWalk_1: 1689811618
+      YuliyaWalk_11: 1238247537
+      YuliyaWalk_10: 1249699381
+      YuliyaWalk_6: 1733747289
+      YuliyaWalk_7: 86793906
+      YuliyaWalk_3: 353299637
+      YuliyaWalk_2: 1740890110
+      YuliyaWalk_5: 1873435657
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
