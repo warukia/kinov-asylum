@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
     // OTROS
     private static bool CanGoBack;
-    private bool SLActivate = false;
+    //private bool SLActivate = false;
 
 
     void Start()

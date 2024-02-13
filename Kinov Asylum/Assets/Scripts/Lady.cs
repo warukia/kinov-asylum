@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Lady : MonoBehaviour
 {
@@ -10,11 +12,17 @@ public class Lady : MonoBehaviour
 
     private GameObject playerObject;
     private PlayerController playerController;
+    private Canvas canvas;
+    private Image switchImage;
 
     void Start()
     {
         playerObject = GameObject.Find("Player").GetComponent<GameObject>();
         playerController = playerObject.GetComponent<PlayerController>();
+        canvas = GameObject.Find("Canvas Rooms").GetComponent<Canvas>();
+        switchImage = canvas.transform.Find("LadySwitch").GetComponent <Image>();
+
+
 
         StartCoroutine(InvertControllers());
     }

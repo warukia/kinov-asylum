@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Harry : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float speed = 8f;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
