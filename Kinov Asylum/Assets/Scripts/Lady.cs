@@ -16,10 +16,17 @@ public class Lady : MonoBehaviour
         playerObject = GameObject.Find("Player").GetComponent<GameObject>();
         playerController = playerObject.GetComponent<PlayerController>();
 
+        StartCoroutine(InvertControllers());
     }
 
     void Update()
     {
         
+    }
+
+    private IEnumerator InvertControllers()
+    {
+        yield return new WaitForSeconds(5);
+        playerController.invertedMovementOn = true;
     }
 }

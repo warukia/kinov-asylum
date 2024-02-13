@@ -140,6 +140,12 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isRunningHash", false);
         }
 
+        // LADY inverted controllers
+        if (invertedMovementOn)
+        {
+            currentPlayerState = PlayerStates.InvertedLocomotion;
+        }
+
         // ARMARIO
         if (CanHide && (Input.GetKeyDown(KeyCode.E)))
         {
@@ -214,6 +220,12 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(horizontal * walkSpeed, rb.velocity.y);
             animator.SetBool("isWalkingHash", false);
             animator.SetBool("isRunningHash", false);
+        }
+
+        // LADY desactivar inverted movement
+        if (!invertedMovementOn)
+        {
+            currentPlayerState = PlayerStates.Locomotion;
         }
 
         // MUERTE
