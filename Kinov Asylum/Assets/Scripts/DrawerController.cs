@@ -18,6 +18,9 @@ public class DrawerController : MonoBehaviour
     private Canvas canvas;
 
     private UnityEngine.UI.Image drawer;
+    private UnityEngine.UI.Image pill;
+    private UnityEngine.UI.Image simon;
+    private GameObject drawerObject;
 
 
     public Transform PlayerPos;
@@ -31,7 +34,10 @@ public class DrawerController : MonoBehaviour
     void Start()
     {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        drawerObject = canvas.transform.Find("OpenDrawer").GetComponent<GameObject>();
         drawer = canvas.transform.Find("OpenDrawer").GetComponent<UnityEngine.UI.Image>();
+
+
         drawer.enabled = false;
 
         // Cómo meter cosas en un diccionario

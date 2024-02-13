@@ -9,11 +9,13 @@ public class SkinnyLegend : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     public SkinnyLegendActivation skinnyLegendActivation;
 
-    public float speed = 5f;
+    public int secondsActivation = 5;
+    public float speed = 5.5f;
     public bool IsActive = false;
 
     void Update()
     {
+        // Se activa si el collider de activación se vuelve true
         IsActive = skinnyLegendActivation.IsActive;
 
         if (IsActive)
@@ -22,13 +24,11 @@ public class SkinnyLegend : MonoBehaviour
         }
     }
 
-    private IEnumerator Activation()
+    private IEnumerator Activation() // Saldrá de la pared.
     {
-        int seconds = 5;
         // Aqui tengo que poner un booleano que active la animacion de entrada de skinny legend
 
-        yield return new WaitForSeconds(seconds);
+        yield return new WaitForSeconds(secondsActivation);
         rb.velocity = new Vector2(speed, 0);
-
     }
 }

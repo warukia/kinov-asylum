@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor.SearchService;
 using TMPro;
 
-public enum PlayerStates { Locomotion, Closet, Dialogue, Death, CantMoveSL };
+public enum PlayerStates { Locomotion, Closet, Dialogue, Death, CantMoveSL, InvertedLocomotion };
 /* Sirve para enumerar diferentes estados de un personaje. Por ejemplo a un policia, se le pueden poner
    diferentes estados como patrullar, perseguir negros, y disparar. De esta manera podremos cambiar de
    estado más fácilmente y nos ahorraremos bastantes booleanos.
@@ -41,7 +41,9 @@ public class PlayerController : MonoBehaviour
     private float horizontal;
     private bool running = false;
     private bool isFacingRight = true;
-    //private bool isHiding = false;
+
+    // LADY: movimiento invertido
+    public bool invertedMovementOn = false;
 
     // MOVIMIENTO ENTRE ROOMS
     private GameObject door;
@@ -72,8 +74,9 @@ public class PlayerController : MonoBehaviour
 
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
 
-        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        canvas = GameObject.Find("Canvas Rooms").GetComponent<Canvas>();
         HealthTextUI = canvas.transform.Find("Health").GetComponent<TextMeshProUGUI>();
+        StaminaBar = canvas.transform.Find("Stamina Bar/Stamina").GetComponent<Image>();
 
         //door = GameObject.Find("Door");
         //roomCounter = door.GetComponent<RoomCounter>();
@@ -156,6 +159,72 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void ProcessInvertedLocomotion()
+    {
+        horizontal = Input.GetAxisRaw("Horizontal") * -1;
+        Flip();
+
+        // Sprint con Shift
+        if (Input.GetKeyDown(KeyCode.LeftShift) && (Stamina > 0))
+        {
+            running = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            running = false;
+        }
+
+        if (Stamina <= 0)
+        {
+            running = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed * .8f);
+        }
+
+        // Movimiento del personaje (caminar y esprintar).
+        if (horizontal != 0)
+        {
+            animator.SetBool("isWalkingHash", true);
+
+            if (running && (horizontal != 0 || Input.GetAxisRaw("Vertical") != 0))
+            {
+                animator.SetBool("isRunningHash", true);
+                rb.velocity = new Vector2(horizontal * runSpeed, rb.velocity.y);
+                Stamina -= RunCost * Time.deltaTime;
+                if (Stamina < 0) Stamina = 0;
+                StaminaBar.fillAmount = Stamina / MaxStamina;
+
+                if (recharge != null)
+                {
+                    StopCoroutine(recharge);
+                }
+                recharge = StartCoroutine(RechargeStamina());
+            }
+            else
+            {
+                animator.SetBool("isRunningHash", false);
+                rb.velocity = new Vector2(horizontal * walkSpeed, rb.velocity.y);
+            }
+        }
+        else
+        {
+            rb.velocity = new Vector2(horizontal * walkSpeed, rb.velocity.y);
+            animator.SetBool("isWalkingHash", false);
+            animator.SetBool("isRunningHash", false);
+        }
+
+        // MUERTE
+        if (health == 0)
+        {
+            animator.SetBool("Die", true);
+            rb.velocity = Vector2.zero;
+            currentPlayerState = PlayerStates.Death;
+        }
+    }
+
     private void ProcessCloset()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -170,9 +239,12 @@ public class PlayerController : MonoBehaviour
     {
         // Se queda quieta mientras se reproduce la cinemática de Skinny Legend
         currentPlayerState = PlayerStates.CantMoveSL;
-        int SLcinematicSeconds = 5;
+        animator.SetBool("isRunningHash", false);
+        animator.SetBool("isWalkingHash", false);
+
         rb.velocity = Vector2.zero;
-        yield return new WaitForSeconds(SLcinematicSeconds);
+        yield return new WaitForSeconds(5);
+        Debug.Log("now you can escape from sl");
         currentPlayerState = PlayerStates.Locomotion;
     }
 
@@ -201,6 +273,10 @@ public class PlayerController : MonoBehaviour
 
             case PlayerStates.Death:
                 StartCoroutine(ProcessDeath());
+                break;
+
+            case PlayerStates.InvertedLocomotion:
+                ProcessInvertedLocomotion();
                 break;
         }
 
