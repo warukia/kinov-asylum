@@ -793,6 +793,7 @@ MonoBehaviour:
   trans: {fileID: 1346508047}
   rb: {fileID: 1346508045}
   skinnyLegendActivation: {fileID: 1227782987}
+  secondsActivation: 5
   speed: 5
   IsActive: 0
 --- !u!4 &1346508047 stripped
@@ -1320,7 +1321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6897987564532184577, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: Canvas Rooms
       objectReference: {fileID: 0}
     - target: {fileID: 6897987564532184589, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
       propertyPath: m_Pivot.x

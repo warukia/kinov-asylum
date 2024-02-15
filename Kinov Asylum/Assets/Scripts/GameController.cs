@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
     public Animator transition;
     public float transitionTime = 1f;
+
+    private void Start()
+    {
+        transition = GameObject.Find("Canvas Rooms")?.transform.Find("Crossfade").GetComponent<Animator>();
+    }
 
     // Carga una room con una transición negra.
     public void LoadNextRoom(int roomIndex)

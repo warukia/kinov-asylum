@@ -45,9 +45,9 @@ public class RoomCounter : MonoBehaviour
         }
     }
 
-    public void CalculateRoomIndex(int num)
+    public void CalculateRoomIndex(int option)
     {
-        if (num == 0) // AVANZAR DE ROOM
+        if (option == 0) // AVANZAR DE ROOM
         {
             if (isInActualRoom)
             {
@@ -71,7 +71,7 @@ public class RoomCounter : MonoBehaviour
                 gameController.LoadNextRoom(indiceRoomActual);
             }
         }
-        else if (num == 1) // RETROCEDER
+        else if (option == 1) // RETROCEDER
         {
             isInActualRoom = false;
 

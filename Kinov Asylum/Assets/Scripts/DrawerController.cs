@@ -33,7 +33,7 @@ public class DrawerController : MonoBehaviour
 
     void Start()
     {
-        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        canvas = GameObject.Find("Canvas Rooms").GetComponent<Canvas>();
         drawerObject = canvas.transform.Find("OpenDrawer").GetComponent<GameObject>();
         drawer = canvas.transform.Find("OpenDrawer").GetComponent<UnityEngine.UI.Image>();
 

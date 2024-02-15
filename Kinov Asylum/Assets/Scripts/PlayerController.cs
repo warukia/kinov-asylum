@@ -375,6 +375,12 @@ public class PlayerController : MonoBehaviour
             TakeDamage(100);
         }
 
+        // LADY & HARRY
+        if (collision.gameObject.CompareTag("Harry"))
+        {
+            TakeDamage(10);
+        }
+
 
         // SKINNY LEGEND
         if (collision.gameObject.CompareTag("Active SL"))
@@ -392,9 +398,6 @@ public class PlayerController : MonoBehaviour
             CanHide = false;
         }
     }
-
-
-
 
 
     public void TakeDamage(float damage)
