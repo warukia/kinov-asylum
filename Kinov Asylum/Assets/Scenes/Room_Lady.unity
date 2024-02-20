@@ -1198,8 +1198,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Harry_N1
       objectReference: {fileID: 0}
+    - target: {fileID: 6770729544723341877, guid: 0e2133c4c8fe96e4da3a9e93305c93de, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 5030518740613322765}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e2133c4c8fe96e4da3a9e93305c93de, type: 3}
+--- !u!50 &5030518740613322765 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 1209844021960445021, guid: 0e2133c4c8fe96e4da3a9e93305c93de, type: 3}
+  m_PrefabInstance: {fileID: 5030518740613322764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5674830935832247496
 PrefabInstance:
   m_ObjectHideFlags: 0

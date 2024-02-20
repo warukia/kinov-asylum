@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     private static float health = 100f;
     public TextMeshProUGUI HealthTextUI;
     private Canvas canvas;
-
+    private bool isImmune = false;
 
     // MOVIMIENTO
     public float jumpSpeed = 8f;
@@ -49,8 +49,6 @@ public class PlayerController : MonoBehaviour
     private GameObject door;
     private RoomCounter roomCounter;
 
-
-
     // STAMINA
     public Image StaminaBar;
     public float Stamina = 100f;
@@ -61,7 +59,6 @@ public class PlayerController : MonoBehaviour
 
     // ESCONDERSE EN ARMARIO
     private bool CanHide = false;
-
 
     // OTROS
     private static bool CanGoBack;
@@ -237,7 +234,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ProcessCloset()
+    private void ProcessCloset() // Está dentro del amario y permite salir 
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -247,9 +244,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator ProcessCantMoveSL()
+    private IEnumerator ProcessCantMoveSL() // Se queda quieta mientras se reproduce la cinemática de Skinny Legend
     {
-        // Se queda quieta mientras se reproduce la cinemática de Skinny Legend
         currentPlayerState = PlayerStates.CantMoveSL;
         animator.SetBool("isRunningHash", false);
         animator.SetBool("isWalkingHash", false);
@@ -258,9 +254,9 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(5);
         Debug.Log("now you can escape from sl");
         currentPlayerState = PlayerStates.Locomotion;
-    }
+    } 
 
-    private IEnumerator ProcessDeath()
+    private IEnumerator ProcessDeath() // Muere
     {
         int seconds = 2;
 
@@ -295,15 +291,12 @@ public class PlayerController : MonoBehaviour
         HealthTextUI.text = health.ToString();
     }
 
-    private bool IsGrounded()
+    private bool IsGrounded() // Cuando está en colisión con el suelo nos permite saltar. 
     {
-        // Cuando está en colisión con el suelo nos permite saltar.
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
-
-    private void Flip()
+    private void Flip() // Voltea el sprite dependiendo de la direccion en la cual esté mirando.
     {
-        // Voltea el sprite dependiendo de la direccion en la cual esté mirando.
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
             isFacingRight = !isFacingRight;
@@ -312,8 +305,7 @@ public class PlayerController : MonoBehaviour
             transform.localScale = localScale;
         }
     }
-
-    private IEnumerator RechargeStamina()
+    private IEnumerator RechargeStamina() // Recarga estamina
     {
         int seconds = 1;
 
@@ -356,7 +348,8 @@ public class PlayerController : MonoBehaviour
             // Vuelve a permitir que vaya atrás
             CanGoBack = true;
 
-            roomCounter.RoomUpdater++;
+            //roomCounter.RoomUpdater++;
+            RoomCounter.RoomNumber++;
             roomCounter.CalculateRoomIndex(0);
         }
 
@@ -365,7 +358,8 @@ public class PlayerController : MonoBehaviour
             // No permite que vaya atrás
             CanGoBack = false;
 
-            roomCounter.RoomUpdater--;
+            //roomCounter.RoomUpdater--;
+            RoomCounter.RoomNumber--;
             roomCounter.CalculateRoomIndex(1);
         }
 
@@ -378,7 +372,13 @@ public class PlayerController : MonoBehaviour
         // LADY & HARRY
         if (collision.gameObject.CompareTag("Harry"))
         {
-            TakeDamage(10);
+            if (!isImmune) TakeDamage(10);
+            if (health > 0)
+            {
+                isImmune = true;
+                StartCoroutine(ThreeImmunitySeconds());
+            }
+
         }
 
 
@@ -399,6 +399,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private IEnumerator ThreeImmunitySeconds() // Es inmune y vuelve a permitir después de 3 segundos que la dañen
+    {
+        yield return new WaitForSeconds(3);
+        isImmune = false;
+    }
 
     public void TakeDamage(float damage)
     {

@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
+public enum DrawerStates { Empty, Pill, Simon, SimonAndPill };
+
 public class DrawerController : MonoBehaviour
 {
-    public static Dictionary<string, DrawerStates> levelsDrawerStates = new Dictionary<string, DrawerStates>();
-
-    public enum DrawerStates { Empty, Pill, Simon, SimonAndPill };
+    public static Dictionary<int, DrawerStates> levelsDrawerStates = new Dictionary<int, DrawerStates>();
 
     [SerializeField] private Transform trans;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -35,10 +35,14 @@ public class DrawerController : MonoBehaviour
     {
         canvas = GameObject.Find("Canvas Rooms").GetComponent<Canvas>();
         drawerObject = canvas.transform.Find("OpenDrawer").GetComponent<GameObject>();
+        RoomCounter roomCounter = GameObject.Find("GameController").GetComponent<RoomCounter>();
         drawer = canvas.transform.Find("OpenDrawer").GetComponent<UnityEngine.UI.Image>();
-
+        pill = canvas.transform.Find("OpenDrawer/Pill").GetComponent<UnityEngine.UI.Image>();
+        simon = canvas.transform.Find("OpenDrawer/Simon").GetComponent<UnityEngine.UI.Image>();
 
         drawer.enabled = false;
+        pill.enabled = false;
+        simon.enabled = false;
 
         // Cómo meter cosas en un diccionario
         //levelsDrawerStates.Add("Key", DrawerStates.Pill);
@@ -57,23 +61,47 @@ public class DrawerController : MonoBehaviour
         // Miramos si no habíamos abierto ya antes el cajón
         string sceneName = SceneManager.GetActiveScene().name;
 
+
+
+
         // Si ya había algo en cajón
-        if (levelsDrawerStates.ContainsKey(sceneName))
-        { 
-                    
-        }
-        else
+        if (levelsDrawerStates.ContainsKey(RoomCounter.RoomNumber))
         {
-            // Generamos aleatoriamente
+            switch (levelsDrawerStates[RoomCounter.RoomNumber])
+            {
+                case DrawerStates.Pill:
+
+                    break;
+
+                case DrawerStates.Simon:
+
+                    break;
+
+                case DrawerStates.SimonAndPill:
+
+                    break;
+            }
+        }
+        else // Si no había nada en el cajón (nueva room)
+        {
+            // Generamos aleatoriamente qué saldrá en el cajón
             Array values = Enum.GetValues(typeof(DrawerStates));
             System.Random random = new System.Random();
             DrawerStates randomBar = (DrawerStates)values.GetValue(random.Next(values.Length));
 
-            levelsDrawerStates.Add(sceneName, randomBar);  
+            levelsDrawerStates.Add(RoomCounter.RoomNumber, randomBar);
 
 
+            //Debug.Log(levelsDrawerStates);
+
+            foreach (KeyValuePair<int, DrawerStates> s in levelsDrawerStates)
+            {
+                Debug.Log(s.Key + ": " + s.Value);
+            }
         }
     }
+
+
 
     void Update()
     {
@@ -84,7 +112,7 @@ public class DrawerController : MonoBehaviour
                 isOpened = true;
                 DrawerState(true);
             }
-            else if (Input.GetKeyDown(KeyCode.E) && isOpened == true)
+            else if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) && isOpened == true)
             {
                 isOpened = false;
                 DrawerState(false);
@@ -114,5 +142,7 @@ public class DrawerController : MonoBehaviour
     public void DrawerState(bool open)
     {
         drawer.enabled = open;
+        pill.enabled = open;
+        simon.enabled = open;
     }
 }

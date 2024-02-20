@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -1352613574, guid: 1ce63bea42434a34d8152c70c61e510b, type: 3}
-  m_Color: {r: 0.48998755, g: 0.6281831, b: 0.8584906, a: 1}
+  m_Color: {r: 0.8160377, g: 0.88453436, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 5030518740443317364}
+  rb: {fileID: 1209844021960445021}
   speed: 8
 --- !u!61 &6950218812073692127
 BoxCollider2D:
@@ -135,7 +136,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.21854645, y: -1.2767688}
+  m_Offset: {x: 0.21854639, y: -1.0070299}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -146,7 +147,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.3322134, y: 3.4464624}
+  m_Size: {x: 4.3322134, y: 1.3202829}
   m_EdgeRadius: 0
 --- !u!50 &1209844021960445021
 Rigidbody2D:
@@ -168,4 +169,4 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 6

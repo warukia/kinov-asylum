@@ -8,21 +8,24 @@ using UnityEngine.SceneManagement;
 public class RoomCounter : MonoBehaviour
 {
     public GameController gameController;
+    private Canvas canvas;
 
     // DETECTAR PUERTA
     private GameObject DoorObject;
     private GameObject BackDoor;
 
-    // NÚMERO DE ROOM
+    // UI & ROOMS
+    public TextMeshProUGUI RoomNumberTextUI;
+    //public int RoomUpdater; // Float que actualiza la room
+    public static int RoomNumber; // Número room actual (es el que aparece en la UI)
+
+    // PLAYABLE SCENES BUILD INDEX
     private int numA = 3;
     private int numB = 7;
-    public float RoomUpdater; // Float que actualiza la room
-
-    // UI
-    private Canvas canvas;
-    public TextMeshProUGUI RoomNumberTextUI;
-    private static float RoomNumber; // Número room actual (el que aparece en la UI)
-
+    private int indexLady = 7;
+    public int roomLady = 5;
+    private int indexSL = 8;
+    public int roomSL = 10;
 
     // ÍNDICES DE LAS ROOMS
     public static int indiceRoomActual;
@@ -31,17 +34,16 @@ public class RoomCounter : MonoBehaviour
 
     public static bool isInActualRoom;
 
-    void Start()
+    void Start() // Obtiene los componentes necesarios al empezar la room 
     {
-        // Obtiene el GameController para poder llamar al método
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
 
         // UI
-        if (GameObject.Find("Canvas") != null)
+        if (GameObject.Find("Canvas Rooms") != null)
         {
-            canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+            canvas = GameObject.Find("Canvas Rooms").GetComponent<Canvas>();
             RoomNumberTextUI = canvas.transform.Find("Room number").GetComponent<TextMeshProUGUI>();
-            RoomUpdater = RoomNumber;
+            //RoomUpdater = RoomNumber; // Esto nos permite cambiar el número de la room
         }
     }
 
@@ -51,21 +53,34 @@ public class RoomCounter : MonoBehaviour
         {
             if (isInActualRoom)
             {
-                do
+                if (RoomNumber == roomSL - 1)
                 {
-                    indiceRoomSiguiente = UnityEngine.Random.Range(numA, numB);
+                    gameController.LoadNextRoom(indexSL);
                 }
-                while (indiceRoomSiguiente == indiceRoomActual || indiceRoomSiguiente == indiceRoomAnterior);
+                else if (RoomNumber == roomLady - 1)
+                {
+                    gameController.LoadNextRoom(indexLady);
+                }
+                else
+                {
+                    // 1. Calcula un índice aleatorio
+                    do
+                    {
+                        indiceRoomSiguiente = UnityEngine.Random.Range(numA, numB);
+                    }
+                    while (indiceRoomSiguiente == indiceRoomActual || indiceRoomSiguiente == indiceRoomAnterior);
 
+                    // 2. Actualiza las variables que guardan los índices 
+                    indiceRoomAnterior = SceneManager.GetActiveScene().buildIndex;
+                    indiceRoomActual = indiceRoomSiguiente;
 
-                indiceRoomAnterior = SceneManager.GetActiveScene().buildIndex;
-                indiceRoomActual = indiceRoomSiguiente;
+                    Debug.Log($"Room anterior: {indiceRoomAnterior} \nSiguiente room: {indiceRoomSiguiente}");
 
-                Debug.Log($"Room anterior: {indiceRoomAnterior} \nSiguiente room: {indiceRoomSiguiente}");
-
-                gameController.LoadNextRoom(indiceRoomSiguiente);
+                    // 3. Carga la siguiente room
+                    gameController.LoadNextRoom(indiceRoomSiguiente);
+                }
             }
-            else
+            else // Si está en la room en la cual ha retrocedido    
             {
                 isInActualRoom = true;
                 gameController.LoadNextRoom(indiceRoomActual);
@@ -79,18 +94,16 @@ public class RoomCounter : MonoBehaviour
 
             gameController.LoadNextRoom(indiceRoomAnterior);
         }
-
     }
 
     void Update()
     {
-        // UI
-        RoomNumber = RoomUpdater;
+        // Actualiza la UI que muestra el número de la room
+        //RoomNumber = RoomUpdater;
 
         if (RoomNumberTextUI != null)
         {
             RoomNumberTextUI.text = "Room " + RoomNumber.ToString();
         }
-
     }
 }

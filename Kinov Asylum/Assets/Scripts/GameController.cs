@@ -31,6 +31,6 @@ public class GameController : MonoBehaviour
 
         // Carga el nivel
         SceneManager.LoadScene(roomIndex);
-        Debug.Log("Scene Loaded");
+        //Debug.Log("Scene Loaded");
     }
 }
