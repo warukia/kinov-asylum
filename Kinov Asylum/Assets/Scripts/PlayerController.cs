@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     // VIDA
     public float damageTaken;
-    private static float health = 100f;
+    public static float health = 100f;
     public TextMeshProUGUI HealthTextUI;
     private Canvas canvas;
     private bool isImmune = false;

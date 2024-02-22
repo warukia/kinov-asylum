@@ -12,16 +12,17 @@ public enum DrawerStates { Empty, Pill, Simon, SimonAndPill };
 public class DrawerController : MonoBehaviour
 {
     public static Dictionary<int, DrawerStates> levelsDrawerStates = new Dictionary<int, DrawerStates>();
+    // El int del dictionary indica el número de la room. Significa que esto está diseñado para que haya
+    // solo un cajón por room :p
 
     [SerializeField] private Transform trans;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private Canvas canvas;
 
-    private UnityEngine.UI.Image drawer;
-    private UnityEngine.UI.Image pill;
-    private UnityEngine.UI.Image simon;
+    public UnityEngine.UI.Image drawer;
+    public UnityEngine.UI.Image pill;
+    public UnityEngine.UI.Image simon;
     private GameObject drawerObject;
-
 
     public Transform PlayerPos;
 
@@ -36,6 +37,7 @@ public class DrawerController : MonoBehaviour
         canvas = GameObject.Find("Canvas Rooms").GetComponent<Canvas>();
         drawerObject = canvas.transform.Find("OpenDrawer").GetComponent<GameObject>();
         RoomCounter roomCounter = GameObject.Find("GameController").GetComponent<RoomCounter>();
+
         drawer = canvas.transform.Find("OpenDrawer").GetComponent<UnityEngine.UI.Image>();
         pill = canvas.transform.Find("OpenDrawer/Pill").GetComponent<UnityEngine.UI.Image>();
         simon = canvas.transform.Find("OpenDrawer/Simon").GetComponent<UnityEngine.UI.Image>();
@@ -60,10 +62,7 @@ public class DrawerController : MonoBehaviour
 
         // Miramos si no habíamos abierto ya antes el cajón
         string sceneName = SceneManager.GetActiveScene().name;
-
-
-
-
+        
         // Si ya había algo en cajón
         if (levelsDrawerStates.ContainsKey(RoomCounter.RoomNumber))
         {
@@ -94,25 +93,26 @@ public class DrawerController : MonoBehaviour
 
             //Debug.Log(levelsDrawerStates);
 
-            foreach (KeyValuePair<int, DrawerStates> s in levelsDrawerStates)
-            {
-                Debug.Log(s.Key + ": " + s.Value);
-            }
+            //foreach (KeyValuePair<int, DrawerStates> s in levelsDrawerStates)
+            //{
+            //    Debug.Log(s.Key + ": " + s.Value);
+            //}
         }
+
+        Debug.Log(levelsDrawerStates[RoomCounter.RoomNumber]);
+        
     }
-
-
-
+    
     void Update()
     {
         if (CanOpenDrawer)
         {
-            if (Input.GetKeyDown(KeyCode.E) && isOpened == false)
+            if (Input.GetKeyDown(KeyCode.E) && !isOpened)
             {
                 isOpened = true;
                 DrawerState(true);
             }
-            else if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) && isOpened == true)
+            else if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) && isOpened)
             {
                 isOpened = false;
                 DrawerState(false);
@@ -141,8 +141,74 @@ public class DrawerController : MonoBehaviour
     // Abre el cajón
     public void DrawerState(bool open)
     {
-        drawer.enabled = open;
-        pill.enabled = open;
-        simon.enabled = open;
+        if (open)
+        {
+            DrawerStates currentState = levelsDrawerStates[RoomCounter.RoomNumber];
+            drawer.gameObject.SetActive(true);
+            drawer.enabled = true;
+
+            switch (currentState)
+            {            
+
+
+                case DrawerStates.Simon:
+
+                    simon.enabled = true;
+
+                    break;
+
+                case DrawerStates.SimonAndPill:
+                    pill.enabled = true;
+                    simon.enabled = true;
+
+                    break;
+
+                case DrawerStates.Pill:
+
+                    pill.enabled = true;
+                    break;
+
+                
+
+
+
+
+            }
+
+
+
+        }
+
+
+        //if (levelsDrawerStates.ContainsValue(DrawerStates.SimonAndPill) && open)
+        //{
+        //    drawer.enabled = true;
+        //    pill.enabled = true;
+        //    simon.enabled = true;
+        //}
+        //else if (levelsDrawerStates.ContainsValue(DrawerStates.Simon) && open)
+        //{
+        //    drawer.enabled = true;
+        //    pill.enabled = false;
+        //    simon.enabled = true;
+        //}
+        //else if (levelsDrawerStates.ContainsValue(DrawerStates.Pill) && open)
+        //{
+        //    drawer.enabled = true;
+        //    pill.enabled = true;
+        //    simon.enabled = false;
+        //}
+        //else if (levelsDrawerStates.ContainsValue(DrawerStates.Empty) && open)
+        //{
+        //    drawer.enabled = true;
+        //    pill.enabled = false;
+        //    simon.enabled = false;
+        //}
+        //else
+        //{
+        //    drawer.enabled = false;
+        //    pill.enabled = false;
+        //    simon.enabled = false;
+        //}
     }
 }
