@@ -149,8 +149,6 @@ public class DrawerController : MonoBehaviour
 
             switch (currentState)
             {            
-
-
                 case DrawerStates.Simon:
 
                     simon.enabled = true;
@@ -167,48 +165,12 @@ public class DrawerController : MonoBehaviour
 
                     pill.enabled = true;
                     break;
-
-                
-
-
-
-
             }
-
-
-
         }
-
-
-        //if (levelsDrawerStates.ContainsValue(DrawerStates.SimonAndPill) && open)
-        //{
-        //    drawer.enabled = true;
-        //    pill.enabled = true;
-        //    simon.enabled = true;
-        //}
-        //else if (levelsDrawerStates.ContainsValue(DrawerStates.Simon) && open)
-        //{
-        //    drawer.enabled = true;
-        //    pill.enabled = false;
-        //    simon.enabled = true;
-        //}
-        //else if (levelsDrawerStates.ContainsValue(DrawerStates.Pill) && open)
-        //{
-        //    drawer.enabled = true;
-        //    pill.enabled = true;
-        //    simon.enabled = false;
-        //}
-        //else if (levelsDrawerStates.ContainsValue(DrawerStates.Empty) && open)
-        //{
-        //    drawer.enabled = true;
-        //    pill.enabled = false;
-        //    simon.enabled = false;
-        //}
-        //else
-        //{
-        //    drawer.enabled = false;
-        //    pill.enabled = false;
-        //    simon.enabled = false;
-        //}
+        else if (!open)
+        {
+            drawer.gameObject.SetActive(false);
+            drawer.enabled = false;
+        }
     }
 }
