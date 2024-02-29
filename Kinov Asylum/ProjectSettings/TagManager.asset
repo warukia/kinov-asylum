@@ -12,6 +12,9 @@ TagManager:
   - Poulette
   - BackDoor
   - Harry
+  - LeakDrop
+  - Puddle
+  - Glass
   layers:
   - Default
   - TransparentFX

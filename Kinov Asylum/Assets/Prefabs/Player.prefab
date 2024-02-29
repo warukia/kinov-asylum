@@ -193,8 +193,9 @@ MonoBehaviour:
   damageTaken: 0
   HealthTextUI: {fileID: 0}
   jumpSpeed: 7
-  walkSpeed: 5
-  runSpeed: 8
+  walkSpeed: 4
+  runSpeed: 6
+  invertedMovementOn: 0
   StaminaBar: {fileID: 0}
   Stamina: 100
   MaxStamina: 100

@@ -36,8 +36,8 @@ public class PlayerController : MonoBehaviour
 
     // MOVIMIENTO
     public float jumpSpeed = 8f;
-    public float walkSpeed = 2f;
-    public float runSpeed = 7f;
+    public float walkSpeed = 4f;
+    public float runSpeed = 6f;
     private float horizontal;
     private bool running = false;
     private bool isFacingRight = true;
@@ -254,7 +254,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(5);
         Debug.Log("now you can escape from sl");
         currentPlayerState = PlayerStates.Locomotion;
-    } 
+    }
 
     private IEnumerator ProcessDeath() // Muere
     {
@@ -363,6 +363,13 @@ public class PlayerController : MonoBehaviour
             roomCounter.CalculateRoomIndex(1);
         }
 
+        // TRAPS
+        if (collision.gameObject.CompareTag("LeakDrop"))
+        {
+            TakeDamage(5);
+            Destroy(collision.gameObject);
+        }
+
         // POULETTE
         if (collision.gameObject.CompareTag("Poulette") && (currentPlayerState == PlayerStates.Locomotion))
         {
@@ -389,13 +396,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Puddle"))
+        {
+            walkSpeed = .7f;
+            runSpeed = 2f;
+        }
 
+        if (collision.gameObject.CompareTag("Glass") && !isImmune)
+        {
+            TakeDamage(5);
+            ThreeImmunitySeconds();
+        }
+    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Hide"))
         {
             CanHide = false;
+        }
+
+
+        if (collision.gameObject.CompareTag("Puddle"))
+        {
+            walkSpeed = 4f;
+            runSpeed = 6f;
         }
     }
 
