@@ -4,29 +4,33 @@ using UnityEngine;
 
 public class HideObject : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
+
     // Esto es el código del armario para esconderse.
 
     [SerializeField] private Collider2D coll;
     [SerializeField] private ContactFilter2D contactFilter;
     private List<Collider2D> collidedObjects = new List<Collider2D>(1);
 
-    protected virtual void Start()
+    private void Start()
     {
-        
+        animator.SetBool("isOpenedHash", false);
     }
 
-    protected virtual void Update()
+    private void Update()
     {
-        //coll.OverlapCollider(contactFilter, collidedObjects);
-        //foreach(var o in collidedObjects)
-        //{
-        //    ClosetInteraction(o.gameObject);
-        //}
+
     }
 
-    protected virtual void ClosetInteraction(GameObject collidedObject)
+    public void ActivateAnimation()
     {
-        //Debug.Log("Collided with " + collidedObject.name);
+        StartCoroutine(OpenAnimation());
+    }
 
+    public IEnumerator OpenAnimation()
+    {
+        animator.SetBool("isOpenedHash", true);
+        yield return new WaitForSeconds(.5f);
+        animator.SetBool("isOpenedHash", false);
     }
 }

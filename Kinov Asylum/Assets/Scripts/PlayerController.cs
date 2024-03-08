@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
 
     // ESCONDERSE EN ARMARIO
     private bool CanHide = false;
+    private HideObject hideObjectScript;
 
     // OTROS
     private static bool CanGoBack;
@@ -149,6 +150,7 @@ public class PlayerController : MonoBehaviour
             // Transición de moverse a esconderse en armario.
             rb.velocity = Vector2.zero;
             spriteRenderer.enabled = false;
+            hideObjectScript.ActivateAnimation();
             currentPlayerState = PlayerStates.Closet;
         }
 
@@ -239,6 +241,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             // Transición de salir del armario.
+            hideObjectScript.ActivateAnimation();
             spriteRenderer.enabled = true;
             currentPlayerState = PlayerStates.Locomotion;
         }
@@ -338,6 +341,7 @@ public class PlayerController : MonoBehaviour
         // ESCONDERSE EN ARMARIOS
         if (collision.gameObject.CompareTag("Hide"))
         {
+            hideObjectScript = collision.GetComponent<HideObject>();
             CanHide = true;
         }
 
