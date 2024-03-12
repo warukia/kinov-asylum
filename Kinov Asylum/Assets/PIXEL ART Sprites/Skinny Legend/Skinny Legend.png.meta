@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: df54989d1dbd9b34caea0ecedc5d75d1
+guid: 406b2fd110c918745bbe74801066bd2c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -44,10 +44,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -141,13 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: YuliyaJump_0
+      name: Skinny Legend_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 978
-        height: 1591
+        width: 269
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f07f6791fee91f3489994cfce6292b44
-      internalID: -1954944838
+      spriteID: 1858ede05f23a9947871dd77e23632bc
+      internalID: -966616259
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YuliyaJump_1
+      name: Skinny Legend_1
       rect:
         serializedVersion: 2
-        x: 978
+        x: 269
         y: 0
-        width: 978
-        height: 1591
+        width: 269
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a99e4a88584db84cb3af09cbffa6cbf
-      internalID: -1877679874
+      spriteID: 1e8faa8a75e11fe4e84942c6f2fd17b9
+      internalID: -687473693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YuliyaJump_2
+      name: Skinny Legend_2
       rect:
         serializedVersion: 2
-        x: 1956
+        x: 538
         y: 0
-        width: 978
-        height: 1591
+        width: 269
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f30987b09deb2d4f8de0ce537c54795
-      internalID: 1256975095
+      spriteID: 4faadf38f5c27a54b957d64275f3b417
+      internalID: 568146115
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YuliyaJump_3
+      name: Skinny Legend_3
       rect:
         serializedVersion: 2
-        x: 2934
+        x: 807
         y: 0
-        width: 978
-        height: 1591
+        width: 269
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a165f8459f27aa4c8dfc6928396541c
-      internalID: 499406934
+      spriteID: beb63404ea904e84e96b6aec83a2bade
+      internalID: 1098802191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YuliyaJump_4
+      name: Skinny Legend_4
       rect:
         serializedVersion: 2
-        x: 3912
+        x: 1076
         y: 0
-        width: 978
-        height: 1591
+        width: 269
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,50 +239,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 848ba25388f8735409b1801c9dacf1b2
-      internalID: 1092611753
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YuliyaJump_5
-      rect:
-        serializedVersion: 2
-        x: 4890
-        y: 0
-        width: 978
-        height: 1591
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7fe240d602e8d0d488500925af1f4df7
-      internalID: -721837695
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YuliyaJump_6
-      rect:
-        serializedVersion: 2
-        x: 5868
-        y: 0
-        width: 978
-        height: 1591
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fa0e6a49955c44f45934cc012790b230
-      internalID: 334626505
+      spriteID: d571ed9ee708e334cb984853ab681014
+      internalID: 1524437057
       vertices: []
       indices: 
       edges: []
@@ -298,13 +256,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      YuliyaJump_3: 499406934
-      YuliyaJump_2: 1256975095
-      YuliyaJump_4: 1092611753
-      YuliyaJump_6: 334626505
-      YuliyaJump_5: -721837695
-      YuliyaJump_1: -1877679874
-      YuliyaJump_0: -1954944838
+      Skinny Legend_0: -966616259
+      Skinny Legend_2: 568146115
+      Skinny Legend_1: -687473693
+      Skinny Legend_3: 1098802191
+      Skinny Legend_4: 1524437057
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
