@@ -291,6 +291,11 @@ public class PlayerController : MonoBehaviour
                 break;
         }
 
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            return;
+        }
+
         HealthTextUI.text = health.ToString();
     }
 
