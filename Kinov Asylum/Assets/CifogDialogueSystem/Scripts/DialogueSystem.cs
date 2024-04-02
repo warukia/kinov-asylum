@@ -10,8 +10,9 @@ namespace CifogDialogueSystem
     public class DialogueSystem : MonoBehaviour
     {
         public float characterDelay;
-        public TextMeshProUGUI uiDialogText;
-        public TextMeshProUGUI uiContinueText;
+        public TextMeshProUGUI uiDialogueText;
+        //public TextMeshProUGUI uiContinueText;
+        public Image uiContinueIcon;
         public TextMeshProUGUI uiCharacterNameText;
         public Image uiCharacterImage;
         public Button[] choicesButtons;
@@ -50,24 +51,26 @@ namespace CifogDialogueSystem
                 foreach (Sentence sentence in monologue)
                 {
                     isTypingText = true;
-                    uiDialogText.text = string.Empty;
+                    uiDialogueText.text = string.Empty;
 
-                    if (uiContinueText != null && !string.IsNullOrEmpty(endOfSentenceText))
+                    if (uiContinueIcon != null && !string.IsNullOrEmpty(endOfSentenceText))
                     {
-                        uiContinueText.text = string.Empty;
+                        uiContinueIcon.enabled = false;
+                        //uiContinueText.text = string.Empty;
                     }
 
                     foreach (char c in sentence)
                     {
-                        uiDialogText.text += c.ToString();
+                        uiDialogueText.text += c.ToString();
                         yield return new WaitForSeconds(currentCharacterDelay);
                     }
 
                     isTypingText = false;
 
-                    if (uiContinueText != null && !string.IsNullOrEmpty(endOfSentenceText))
+                    if (uiContinueIcon != null && !string.IsNullOrEmpty(endOfSentenceText))
                     {
-                        uiContinueText.text = endOfSentenceText;
+                        uiContinueIcon.enabled = true;
+                        //uiContinueText.text = endOfSentenceText;
                     }
 
                     currentCharacterDelay = characterDelay;
