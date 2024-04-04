@@ -24,14 +24,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     public GameController gameController;
     public RoomCounter roomController;
+    private Canvas canvas;
 
     private PlayerStates currentPlayerState;
 
     // VIDA
     public float damageTaken;
     public static float health = 100f;
-    public TextMeshProUGUI HealthTextUI;
-    private Canvas canvas;
+    public Image HealthBar;
     private bool isImmune = false;
 
     // MOVIMIENTO
@@ -73,8 +73,8 @@ public class PlayerController : MonoBehaviour
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
 
         canvas = GameObject.Find("Canvas Rooms").GetComponent<Canvas>();
-        HealthTextUI = canvas.transform.Find("Health").GetComponent<TextMeshProUGUI>();
         StaminaBar = canvas.transform.Find("Stamina Bar/Stamina").GetComponent<Image>();
+        HealthBar = canvas.transform.Find("Stamina Bar/Health").GetComponent<Image>();
 
         //door = GameObject.Find("Door");
         //roomCounter = door.GetComponent<RoomCounter>();
@@ -291,12 +291,10 @@ public class PlayerController : MonoBehaviour
                 break;
         }
 
-        if (DialogueManager.GetInstance().dialogueIsPlaying)
-        {
-            return;
-        }
-
-        HealthTextUI.text = health.ToString();
+        //if (DialogueManager.GetInstance().dialogueIsPlaying)
+        //{
+        //    return;
+        //}
     }
 
     private bool IsGrounded() // Cuando está en colisión con el suelo nos permite saltar. 
@@ -378,6 +376,15 @@ public class PlayerController : MonoBehaviour
             TakeDamage(5);
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.CompareTag("CeilingBricks"))
+        {
+            TakeDamage(20);
+        }
+        if (collision.gameObject.CompareTag("Glass") && !isImmune)
+        {
+            TakeDamage(5);
+            ThreeImmunitySeconds();
+        }
 
         // POULETTE
         if (collision.gameObject.CompareTag("Poulette") && (currentPlayerState == PlayerStates.Locomotion))
@@ -412,12 +419,6 @@ public class PlayerController : MonoBehaviour
             walkSpeed = .7f;
             runSpeed = 2f;
         }
-
-        if (collision.gameObject.CompareTag("Glass") && !isImmune)
-        {
-            TakeDamage(5);
-            ThreeImmunitySeconds();
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -444,6 +445,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        HealthBar.fillAmount = health / 100f;
         Debug.Log($"Took {damage} points of damage and Yuliya's health is {health}.");
     }
 }

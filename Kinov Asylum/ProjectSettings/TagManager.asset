@@ -15,6 +15,7 @@ TagManager:
   - LeakDrop
   - Puddle
   - Glass
+  - CeilingBricks
   layers:
   - Default
   - TransparentFX
