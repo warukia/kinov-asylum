@@ -1188,6 +1188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Rooms
       objectReference: {fileID: 0}
+    - target: {fileID: 743656037190862307, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4044256758456435764, guid: a5fde38ff9d03f044add0eaa1af33516, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -203.79999
@@ -1901,7 +1905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7517492811094768492, guid: 08d7f3cb867c0ec4a905a99771ff620f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.6695786
+      value: 146.2
       objectReference: {fileID: 0}
     - target: {fileID: 7517492811094768492, guid: 08d7f3cb867c0ec4a905a99771ff620f, type: 3}
       propertyPath: m_LocalRotation.w
