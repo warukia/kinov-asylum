@@ -11,14 +11,20 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        target = GameObject.Find("Player").GetComponent<Transform>();
-        doorPos = GameObject.Find("Door").GetComponent<Transform>();
+        if (GameObject.Find("Player") != null && GameObject.Find("Door") != null)
+        {
+            target = GameObject.Find("Player").GetComponent<Transform>();
+            doorPos = GameObject.Find("Door").GetComponent<Transform>();
+        }
     }
 
     void Update()
     {
         // Nota: En el parkour de Skinny Legend si hacemos que salte cosas muy altas cambiarle el número 0 de la y al del personaje.
-        Vector3 newPos = new Vector3(Mathf.Clamp(target.position.x, 0, (doorPos.position.x - 8f)), 0, -10);
-        transform.position = Vector3.Slerp(transform.position, newPos, FollowSpeed * Time.deltaTime);
+        if (target != null && doorPos != null)
+        {
+            Vector3 newPos = new Vector3(Mathf.Clamp(target.position.x, 0, (doorPos.position.x - 8f)), 0, -10);
+            transform.position = Vector3.Slerp(transform.position, newPos, FollowSpeed * Time.deltaTime);
+        }
     }
 }
