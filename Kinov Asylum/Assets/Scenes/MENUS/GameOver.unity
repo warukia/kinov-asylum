@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 882123591}
   - component: {fileID: 882123590}
   - component: {fileID: 882123589}
+  - component: {fileID: 882123592}
   m_Layer: 0
   m_Name: GameOver Animation
   m_TagString: Untagged
@@ -228,6 +229,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &882123592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882123588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73cb46bec54a578458d708e67fcd0613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 882123590}
 --- !u!1 &1140212445
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +499,18 @@ PrefabInstance:
     - target: {fileID: 2802845585952900604, guid: 12907c2ff907eed42b47d7ac3a715c76, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802845585952900607, guid: 12907c2ff907eed42b47d7ac3a715c76, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.03529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802845585952900607, guid: 12907c2ff907eed42b47d7ac3a715c76, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.043137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802845585952900607, guid: 12907c2ff907eed42b47d7ac3a715c76, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.039215688
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12907c2ff907eed42b47d7ac3a715c76, type: 3}

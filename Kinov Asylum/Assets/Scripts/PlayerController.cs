@@ -267,6 +267,7 @@ public class PlayerController : MonoBehaviour
 
         SceneManager.LoadScene("GameOver");
         health = 100f;
+        animator.SetBool("Die", false);
         currentPlayerState = PlayerStates.Locomotion;
     }
 
@@ -373,15 +374,18 @@ public class PlayerController : MonoBehaviour
         // TRAPS
         if (collision.gameObject.CompareTag("LeakDrop"))
         {
+            GameOverController.enemyKilled = "Traps";
             TakeDamage(5);
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("CeilingBricks"))
         {
+            GameOverController.enemyKilled = "Traps";
             TakeDamage(20);
         }
         if (collision.gameObject.CompareTag("Glass") && !isImmune)
         {
+            GameOverController.enemyKilled = "Traps";
             TakeDamage(5);
             ThreeImmunitySeconds();
         }
@@ -389,13 +393,21 @@ public class PlayerController : MonoBehaviour
         // POULETTE
         if (collision.gameObject.CompareTag("Poulette") && (currentPlayerState == PlayerStates.Locomotion))
         {
+            GameOverController.enemyKilled = "Poulette";
             TakeDamage(100);
         }
 
         // LADY & HARRY
         if (collision.gameObject.CompareTag("Harry"))
         {
-            if (!isImmune) TakeDamage(10);
+
+            if (!isImmune)
+            {
+                GameOverController.enemyKilled = "Lady";
+                TakeDamage(10);
+
+            }
+
             if (health > 0)
             {
                 isImmune = true;
@@ -404,11 +416,16 @@ public class PlayerController : MonoBehaviour
 
         }
 
-
         // SKINNY LEGEND
         if (collision.gameObject.CompareTag("Active SL"))
         {
             StartCoroutine(ProcessCantMoveSL());
+        }
+
+        if (collision.gameObject.CompareTag("SL"))
+        {
+            GameOverController.enemyKilled = "SL";
+            TakeDamage(100);
         }
     }
 
@@ -445,6 +462,11 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        if (health < 0)
+        {
+            health = 0;
+        }
+
         HealthBar.fillAmount = health / 100f;
         Debug.Log($"Took {damage} points of damage and Yuliya's health is {health}.");
     }
