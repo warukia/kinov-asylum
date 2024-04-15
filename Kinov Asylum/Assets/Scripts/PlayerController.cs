@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource source;
     public GameController gameController;
     public RoomCounter roomController;
     private Canvas canvas;
@@ -48,6 +49,8 @@ public class PlayerController : MonoBehaviour
     // MOVIMIENTO ENTRE ROOMS
     private GameObject door;
     private RoomCounter roomCounter;
+    public AudioClip doorOpeningClip;
+    public AudioClip doorClosingClip;
 
     // STAMINA
     public Image StaminaBar;
@@ -75,6 +78,8 @@ public class PlayerController : MonoBehaviour
         canvas = GameObject.Find("Canvas Rooms").GetComponent<Canvas>();
         StaminaBar = canvas.transform.Find("Stamina Bar/Stamina").GetComponent<Image>();
         HealthBar = canvas.transform.Find("Stamina Bar/Health").GetComponent<Image>();
+
+        //source.PlayOneShot(doorClosingClip);
 
         //door = GameObject.Find("Door");
         //roomCounter = door.GetComponent<RoomCounter>();
@@ -340,6 +345,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // ESCONDERSE EN ARMARIOS
@@ -347,6 +353,7 @@ public class PlayerController : MonoBehaviour
         {
             hideObjectScript = collision.GetComponent<HideObject>();
             CanHide = true;
+            GameObject.Find("Closet").transform.Find("Key_E").GetComponent<SpriteRenderer>().enabled = true;
         }
 
 
@@ -355,6 +362,7 @@ public class PlayerController : MonoBehaviour
         {
             // Vuelve a permitir que vaya atrás
             CanGoBack = true;
+            source.PlayOneShot(doorOpeningClip);
 
             //roomCounter.RoomUpdater++;
             RoomCounter.RoomNumber++;
@@ -443,6 +451,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Hide"))
         {
             CanHide = false;
+            GameObject.Find("Closet").transform.Find("Key_E").GetComponent<SpriteRenderer>().enabled = false;
         }
 
 

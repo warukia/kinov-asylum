@@ -9,7 +9,7 @@ public class BackDoorStates : MonoBehaviour
     // no se deberían poder repetir este tipo de niveles.
 
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] BoxCollider2D boxCollider;
+    [SerializeField] BoxCollider2D boxCollider2D;
     public bool canGoBack = true;
     public RoomCounter roomCounter;
 
@@ -19,11 +19,11 @@ public class BackDoorStates : MonoBehaviour
         //if (roomCounter.RoomUpdater == roomCounter.roomSL+1)
         if (RoomCounter.RoomNumber == roomCounter.roomSL + 1)
         {
-            boxCollider.isTrigger = false;
+            boxCollider2D.isTrigger = false;
         }
         else
         {
-            boxCollider.isTrigger = true;
+            boxCollider2D.isTrigger = true;
         }
     }
 

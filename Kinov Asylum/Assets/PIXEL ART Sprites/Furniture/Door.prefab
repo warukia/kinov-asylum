@@ -121,10 +121,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6868572893464914515}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1decb24e6039dcf4bad0925d16acc195, type: 3}
+  m_Script: {fileID: 11500000, guid: 015b8f23d52a0c94e935f84188a1c60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 6868572893464914513}
-  boxCollider: {fileID: 6868572893464914514}
+  boxCollider2D: {fileID: 6868572893464914514}
   canGoBack: 1
   roomCounter: {fileID: 0}
