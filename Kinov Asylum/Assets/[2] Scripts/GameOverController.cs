@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOverController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    public GameObject panelButtons;
     public static string enemyKilled;
 
     // Este script permite identificar el bicho que te ha matado y reproducir
@@ -12,6 +15,9 @@ public class GameOverController : MonoBehaviour
 
     void Start()
     {
+        spriteRenderer.enabled = true;
+        panelButtons.SetActive(false);
+
         if (enemyKilled == "Poulette")
         {
             animator.SetBool("PouletteDeathHash", true);
@@ -36,5 +42,14 @@ public class GameOverController : MonoBehaviour
         {
             animator.SetBool("ViktorDeathHash", true);
         }
+
+        StartCoroutine(FinishAnimation());
+    }
+
+    private IEnumerator FinishAnimation()
+    {
+        yield return new WaitForSeconds(9);
+        spriteRenderer.enabled = false;
+        panelButtons.SetActive(true);
     }
 }

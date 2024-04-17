@@ -22,6 +22,11 @@ public class UIController : MonoBehaviour
         SceneManager.LoadScene("Room0");
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void ExitGame()
     {
         Application.Quit();
