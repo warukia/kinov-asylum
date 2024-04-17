@@ -353,7 +353,7 @@ public class PlayerController : MonoBehaviour
         {
             hideObjectScript = collision.GetComponent<HideObject>();
             CanHide = true;
-            GameObject.Find("Closet").transform.Find("Key_E").GetComponent<SpriteRenderer>().enabled = true;
+            collision.transform.Find("Key_E").GetComponent<SpriteRenderer>().enabled = true;
         }
 
 
@@ -451,7 +451,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Hide"))
         {
             CanHide = false;
-            GameObject.Find("Closet").transform.Find("Key_E").GetComponent<SpriteRenderer>().enabled = false;
+            collision.transform.Find("Key_E").GetComponent<SpriteRenderer>().enabled = false;
         }
 
 
