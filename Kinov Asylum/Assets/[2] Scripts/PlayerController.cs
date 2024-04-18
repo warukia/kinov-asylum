@@ -45,12 +45,14 @@ public class PlayerController : MonoBehaviour
 
     // LADY: movimiento invertido
     public bool invertedMovementOn = false;
+    public bool ladyCanAdvance;
 
     // MOVIMIENTO ENTRE ROOMS
     private GameObject door;
     private RoomCounter roomCounter;
     public AudioClip doorOpeningClip;
     public AudioClip doorClosingClip;
+    public bool pouletteCanAdvance;
 
     // STAMINA
     public Image StaminaBar;
@@ -78,6 +80,19 @@ public class PlayerController : MonoBehaviour
         canvas = GameObject.Find("Canvas Rooms").GetComponent<Canvas>();
         StaminaBar = canvas.transform.Find("Stamina Bar/Stamina").GetComponent<Image>();
         HealthBar = canvas.transform.Find("Stamina Bar/Health").GetComponent<Image>();
+        HealthBar.fillAmount = health / 100f;
+
+        if (GameObject.Find("Poulette") == null)
+        {
+            pouletteCanAdvance = true;
+        }
+        else
+        {
+             pouletteCanAdvance = false;
+        }
+
+        if (GameObject.Find("Lady") == null) ladyCanAdvance = true;
+        else ladyCanAdvance = false;
 
         //source.PlayOneShot(doorClosingClip);
 
@@ -358,7 +373,7 @@ public class PlayerController : MonoBehaviour
 
 
         // MOVERSE ENTRE ROOMS
-        if (collision.gameObject.CompareTag("Door"))
+        if (collision.gameObject.CompareTag("Door") && pouletteCanAdvance && ladyCanAdvance)
         {
             // Vuelve a permitir que vaya atrás
             CanGoBack = true;
@@ -369,7 +384,7 @@ public class PlayerController : MonoBehaviour
             roomCounter.CalculateRoomIndex(0);
         }
 
-        if (collision.gameObject.CompareTag("BackDoor") && CanGoBack)
+        if (collision.gameObject.CompareTag("BackDoor") && CanGoBack && pouletteCanAdvance && (GameObject.Find("Lady") != null))
         {
             // No permite que vaya atrás
             CanGoBack = false;

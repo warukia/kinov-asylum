@@ -19,6 +19,6 @@ public class Leak : MonoBehaviour
 
     public void SpawnDrop()
     {
-        Instantiate(LeakDrop, transform.position, Quaternion.identity);
+        Instantiate(LeakDrop, new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z), Quaternion.identity);
     }
 }

@@ -9,20 +9,22 @@ public class Harry : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private Rigidbody2D rb;
     public float speed = 8f;
+    public bool allowedMovement;
 
     private float posXActual;
-    private float posXA = -5f;
-    private float posXB = 17f;
+    private float posXA = -7f;
+    private float posXB = 21f;
 
 
     void Start()
     {
-
+        allowedMovement = false;
         // anim.setbool("isrunning", true);
     }
 
     void Update()
     {
+        // MOVIMIENTO HARRY
         posXActual = rb.position.x;
 
         if (posXActual >= posXB)
@@ -34,6 +36,13 @@ public class Harry : MonoBehaviour
             speed = 8;
         }
 
-        rb.velocity = new Vector2(speed, 0);
+        if (allowedMovement)
+        {
+            rb.velocity = new Vector2(speed, 0);
+        }
+        else if (!allowedMovement)
+        {
+            rb.velocity = new Vector2(0, 0);
+        }
     }
 }

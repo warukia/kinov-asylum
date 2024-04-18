@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a1303846bc31c724fb81dd19ab11a7d4
+guid: 17c1a27dd765ad54895e69728f89ebf3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -141,13 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LeakRoof_0
+      name: LadySwitch_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 75
-        height: 27
+        width: 495
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f97f346d99ee84a429ec8e4325f8af55
-      internalID: 354675586
+      spriteID: 77021ddef89bbf741bb658d948723158
+      internalID: -423714363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LeakRoof_1
+      name: LadySwitch_1
       rect:
         serializedVersion: 2
-        x: 75
+        x: 495
         y: 0
-        width: 75
-        height: 27
+        width: 495
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4eea3bc35074a6749be22eb6e6ed8594
-      internalID: 1354211194
+      spriteID: f53b3b284989bfc4985a87382a4cf656
+      internalID: 1267777096
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LeakRoof_2
+      name: LadySwitch_2
       rect:
         serializedVersion: 2
-        x: 150
+        x: 990
         y: 0
-        width: 75
-        height: 27
+        width: 495
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31db384b8ab295844954c63c4f12ab2b
-      internalID: -186566417
+      spriteID: 314bf027ee3967b41846605da0d7fd5e
+      internalID: 1961982974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LeakRoof_3
+      name: LadySwitch_3
       rect:
         serializedVersion: 2
-        x: 225
+        x: 1485
         y: 0
-        width: 75
-        height: 27
+        width: 495
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,29 +218,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 214940df65da331448112266b6196963
-      internalID: -556070653
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LeakRoof_4
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 0
-        width: 75
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bf196d749566f8247822963525284815
-      internalID: 357676103
+      spriteID: e92a14ad10c52d645a830114df9e1b5a
+      internalID: 1395007899
       vertices: []
       indices: 
       edges: []
@@ -256,11 +235,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      LeakRoof_3: -556070653
-      LeakRoof_4: 357676103
-      LeakRoof_2: -186566417
-      LeakRoof_0: 354675586
-      LeakRoof_1: 1354211194
+      LadySwitch_0: -423714363
+      LadySwitch_3: 1395007899
+      LadySwitch_1: 1267777096
+      LadySwitch_2: 1961982974
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

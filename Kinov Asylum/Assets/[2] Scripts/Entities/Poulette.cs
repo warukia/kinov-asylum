@@ -9,6 +9,8 @@ public class Poulette : MonoBehaviour
     // El flickering de las luces está incorporado en el Animator.
 
     [SerializeField] private Transform trns;
+    private PlayerController playerController;
+    private Transform doorPosX;
     private bool isActive = false;
     private float speed = 20f;
     private int seconds;
@@ -17,6 +19,8 @@ public class Poulette : MonoBehaviour
     void Start()
     {
         seconds = Random.Range(2, 5);
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        doorPosX = GameObject.Find("Door").GetComponent<Transform>();
         StartCoroutine(Appear(seconds));
     }
 
@@ -25,6 +29,11 @@ public class Poulette : MonoBehaviour
         if (isActive)
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(100, -0.15f), speed * Time.deltaTime);
+        }
+
+        if (trns.position.x >= (doorPosX.position.x + 5))
+        {
+            playerController.pouletteCanAdvance = true;
         }
     }
 

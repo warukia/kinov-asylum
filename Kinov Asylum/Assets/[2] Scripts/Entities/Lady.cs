@@ -15,14 +15,16 @@ public class Lady : MonoBehaviour
     private PlayerController playerController;
     private Canvas canvas;
     private Image switchImage;
+    public Harry harryController;
 
     void Start()
     {
         playerObject = GameObject.Find("Player");
         playerController = playerObject.GetComponent<PlayerController>();
+        harryController = GameObject.Find("Harry_N1").GetComponent<Harry>();
         canvas = GameObject.Find("Canvas Rooms").GetComponent<Canvas>();
-        switchImage = canvas.transform.Find("LadySwitch").GetComponent <Image>();
-
+        switchImage = canvas.transform.Find("Switch").GetComponent <Image>();
+        switchImage.enabled = false;
 
 
         StartCoroutine(Level());
@@ -33,44 +35,73 @@ public class Lady : MonoBehaviour
         
     }
 
+    // Hay que añadir que se active el movimiento de Harry al iniciar el juego bueno un poco mas tarde y al finalizar.
     private IEnumerator Level()
     {
+        yield return new WaitForSeconds(2);
+        harryController.allowedMovement = true;
         Debug.Log("Lady's level Started!");
 
         yield return new WaitForSeconds(5);
         playerController.invertedMovementOn = true;
-        Debug.Log("Lady invert " + playerController.invertedMovementOn);
+        switchImage.enabled = true;
+
+        yield return new WaitForSeconds(.3f);
+        switchImage.enabled = false;
 
         yield return new WaitForSeconds(5);
         playerController.invertedMovementOn = false;
-        Debug.Log("Lady invert " + playerController.invertedMovementOn);
+        switchImage.enabled = true;
+
+        yield return new WaitForSeconds(.3f);
+        switchImage.enabled = false;
 
         yield return new WaitForSeconds(4);
         playerController.invertedMovementOn = true;
-        Debug.Log("Lady invert " + playerController.invertedMovementOn);
+        switchImage.enabled = true;
+
+        yield return new WaitForSeconds(.3f);
+        switchImage.enabled = false;
 
         yield return new WaitForSeconds(5);
         playerController.invertedMovementOn = false;
-        Debug.Log("Lady invert " + playerController.invertedMovementOn);
+        switchImage.enabled = true;
+
+        yield return new WaitForSeconds(.3f);
+        switchImage.enabled = false;
 
         yield return new WaitForSeconds(4);
         playerController.invertedMovementOn = true;
-        Debug.Log("Lady invert " + playerController.invertedMovementOn);
+        switchImage.enabled = true;
+
+        yield return new WaitForSeconds(.3f);
+        switchImage.enabled = false;
 
         yield return new WaitForSeconds(5);
         playerController.invertedMovementOn = false;
-        Debug.Log("Lady invert " + playerController.invertedMovementOn);
+        switchImage.enabled = true;
+
+        yield return new WaitForSeconds(.3f);
+        switchImage.enabled = false;
 
         yield return new WaitForSeconds(4);
         playerController.invertedMovementOn = true;
-        Debug.Log("Lady invert " + playerController.invertedMovementOn);
+        switchImage.enabled = true;
+
+        yield return new WaitForSeconds(.3f);
+        switchImage.enabled = false;
 
         yield return new WaitForSeconds(5);
         playerController.invertedMovementOn = false;
-        Debug.Log("Lady invert " + playerController.invertedMovementOn);
+        switchImage.enabled = true;
+
+        yield return new WaitForSeconds(.3f);
+        switchImage.enabled = false;
 
         yield return new WaitForSeconds(4);
         Debug.Log("Game ended");
+        playerController.ladyCanAdvance = true;
+        harryController.allowedMovement = false;
     }
 
 

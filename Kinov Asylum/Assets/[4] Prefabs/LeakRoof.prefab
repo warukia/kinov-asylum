@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 4487487535508484829}
   - component: {fileID: 4487487535508484828}
   - component: {fileID: 4487487535508484771}
+  - component: {fileID: 4819106691202154358}
   m_Layer: 0
   m_Name: LeakRoof
   m_TagString: Untagged
@@ -138,7 +139,7 @@ Transform:
   m_GameObject: {fileID: 4487487535508484770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.57, y: 3.66, z: 0}
-  m_LocalScale: {x: 2.0884, y: 0.378, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4487487534919344118}
@@ -186,8 +187,8 @@ SpriteRenderer:
   m_SortingLayerID: 231691165
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: c0d3835e3f9919f4694da6eb00ae6f9c, type: 3}
-  m_Color: {r: 0.3773585, g: 0.20477724, b: 0.17265932, a: 1}
+  m_Sprite: {fileID: 354675586, guid: a1303846bc31c724fb81dd19ab11a7d4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -210,3 +211,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LeakDrop: {fileID: 3595241537016068577, guid: 4ad5670eb13765d4db6c247566010c51, type: 3}
+--- !u!95 &4819106691202154358
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487487535508484770}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dbceb3b921578474d988c34081d36f14, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

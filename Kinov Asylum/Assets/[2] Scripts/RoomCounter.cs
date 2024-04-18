@@ -20,11 +20,13 @@ public class RoomCounter : MonoBehaviour
     public static int RoomNumber; // Número room actual (es el que aparece en la UI)
 
     // PLAYABLE SCENES BUILD INDEX
-    private int numA = 3;
-    private int numB = 7;
-    private int indexLady = 7;
+    private int numA = 5;
+    private int numB = 10;
+
+    // Escenas especiales
+    private int indexLady = 2;
     public int roomLady = 5;
-    private int indexSL = 8;
+    private int indexSL = 3;
     public int roomSL = 10;
 
     // ÍNDICES DE LAS ROOMS

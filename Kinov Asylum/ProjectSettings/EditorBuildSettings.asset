@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/[1] Scenes/MENUS/GameOver.unity
     guid: 776154c50173f8d45a1951c91b2783e1
   - enabled: 1
-    path: Assets/Scenes/S_Room_Chillmeister.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
     path: Assets/[1] Scenes/S_Room_Lady.unity
     guid: cce0ee8b1ba7d6f4dbc64f30346cb672
   - enabled: 1
@@ -27,9 +24,15 @@ EditorBuildSettings:
     path: Assets/[1] Scenes/RoomA.unity
     guid: 0f16fb2d0eac7964d90d0c15d7497189
   - enabled: 1
-    path: Assets/Scenes/RoomC.unity
-    guid: 8ce7f23c00d615b43ad19fe3b493ffb0
+    path: Assets/[1] Scenes/RoomB.unity
+    guid: 3168356d46aace3418ce5ca4ffdb2ff0
+  - enabled: 1
+    path: Assets/[1] Scenes/RoomC.unity
+    guid: 75b1dc480e619624cb296970002eb99c
   - enabled: 1
     path: Assets/[1] Scenes/RoomD.unity
     guid: fa5612248d0e16c40ab0b0add9744c1b
+  - enabled: 1
+    path: Assets/[1] Scenes/RoomE.unity
+    guid: 72ccd17a41980ef438cd64cd15707090
   m_configObjects: {}
