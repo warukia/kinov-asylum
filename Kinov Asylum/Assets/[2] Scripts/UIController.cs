@@ -7,9 +7,11 @@ using UnityEngine.SceneManagement;
 public class UIController : MonoBehaviour
 {
     private DrawerController drawerController;
+    private PlayerController playerController;
+
     private void Start()
     {
-
+        playerController = GameObject.Find("Player")?.GetComponent<PlayerController>();
     }
 
     public void StartGame()
@@ -36,15 +38,22 @@ public class UIController : MonoBehaviour
     {
         if (PlayerController.health < 100)
         {
-            PlayerController.health += 10;
-            //drawerController.pill.enabled = false;
+            playerController.TakeDamage(-10);
+            drawerController.pill.enabled = false;
+
+            //DrawerController.levelsDrawerStates[RoomCounter.RoomNumber] = drawerController.DrawerState{ 0 };
+
+            Debug.Log("Health + 10");
         }
-        Debug.Log("Health + 10");
     }
 
     public void Simon()
     {
-        PlayerController.health -= 10;
-        Debug.Log("ola soi simon :B tematare");
+        playerController.TakeDamage(10);
+        //DrawerController.levelsDrawerStates = DrawerController.levelsDrawerStates.< RoomCounter.RoomNumber, DrawerStates.Empty >;
+
+        //currentPlayerState = PlayerStates.InvertedLocomotion;
+
+        drawerController.simon.enabled = false;
     }
 }

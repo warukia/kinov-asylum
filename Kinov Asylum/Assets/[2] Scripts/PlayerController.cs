@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEditor.SearchService;
 using TMPro;
 
 public enum PlayerStates { Locomotion, Closet, Dialogue, Death, CantMoveSL, InvertedLocomotion };
@@ -65,6 +64,9 @@ public class PlayerController : MonoBehaviour
     // ESCONDERSE EN ARMARIO
     private bool CanHide = false;
     private HideObject hideObjectScript;
+
+    // SONIDOS
+    public AudioClip glassStepsClip;
 
     // OTROS
     private static bool CanGoBack;
@@ -409,6 +411,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Glass") && !isImmune)
         {
             GameOverController.enemyKilled = "Traps";
+            source.PlayOneShot(glassStepsClip);
             TakeDamage(5);
             ThreeImmunitySeconds();
         }
@@ -486,6 +489,11 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        if (health > 100)
+        {
+            health = 100;
+        }
+
         if (health < 0)
         {
             health = 0;
