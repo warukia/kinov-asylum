@@ -6,17 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
+    private AudioSource audioSource;
     private DrawerController drawerController;
     private PlayerController playerController;
+
+    public AudioClip clickClip;
 
     private void Start()
     {
         playerController = GameObject.Find("Player")?.GetComponent<PlayerController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void StartGame()
     {
         // Reseteamos datos
+        audioSource.PlayOneShot(clickClip);
         RoomCounter.isInActualRoom = true;
         RoomCounter.indiceRoomActual = RoomCounter.indiceRoomAnterior = RoomCounter.RoomNumber = 0;
         drawerController = GameObject.Find("Drawer")?.GetComponent<DrawerController>();
@@ -27,11 +32,13 @@ public class UIController : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        audioSource.PlayOneShot(clickClip);
     }
 
     public void ExitGame()
     {
         Application.Quit();
+        audioSource.PlayOneShot(clickClip);
     }
 
     public void Pill()

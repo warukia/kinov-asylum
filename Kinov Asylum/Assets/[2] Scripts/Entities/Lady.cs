@@ -103,6 +103,4 @@ public class Lady : MonoBehaviour
         playerController.ladyCanAdvance = true;
         harryController.allowedMovement = false;
     }
-
-
 }

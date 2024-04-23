@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5917581712219690859
+--- !u!114 &-1871431868670977182
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -26,8 +26,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 65472
   tint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.7882353, g: 0.85572064, b: 0.8862745, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
@@ -41,7 +41,7 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 0
---- !u!114 &-1486195938271745604
+--- !u!114 &-1654774987941832233
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,40 +53,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
   m_Name: ColorAdjustments
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   postExposure:
     m_OverrideState: 1
-    m_Value: -1.05
+    m_Value: 0.27
   contrast:
     m_OverrideState: 1
-    m_Value: 6
+    m_Value: 3
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 0.8751039, g: 0.9245283, b: 0.8591136, a: 1}
+    m_Value: {r: 0.69411767, g: 0.7065993, b: 1, a: 1}
   hueShift:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: -180
   saturation:
-    m_OverrideState: 1
-    m_Value: 13
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: Global Volume Menu Profile
-  m_EditorClassIdentifier: 
-  components:
-  - {fileID: -5917581712219690859}
-  - {fileID: 4912285729523203595}
-  - {fileID: -1486195938271745604}
-  - {fileID: 8643065604974907847}
---- !u!114 &4912285729523203595
+    m_OverrideState: 0
+    m_Value: 100
+--- !u!114 &-88891722981158228
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,41 +84,32 @@ MonoBehaviour:
   active: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.036445364, g: 0.084905684, b: 0.03795826, a: 1}
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
   center:
     m_OverrideState: 0
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.35
+    m_Value: 0.206
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.548
+    m_Value: 0.71
   rounded:
     m_OverrideState: 0
     m_Value: 0
---- !u!114 &8643065604974907847
+--- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 3
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
-  m_Name: FilmGrain
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Global Volume Viktor
   m_EditorClassIdentifier: 
-  active: 1
-  type:
-    m_OverrideState: 1
-    m_Value: 1
-  intensity:
-    m_OverrideState: 1
-    m_Value: 0.228
-  response:
-    m_OverrideState: 1
-    m_Value: 0.776
-  texture:
-    m_OverrideState: 0
-    m_Value: {fileID: 0}
+  components:
+  - {fileID: -1871431868670977182}
+  - {fileID: -88891722981158228}
+  - {fileID: -1654774987941832233}
