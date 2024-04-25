@@ -24,10 +24,10 @@ public class RoomCounter : MonoBehaviour
     private int numB = 10;
 
     // Escenas especiales
-    private int indexLady = 2;
-    public int roomLady = 5;
+    private int indexLady = 2; 
+    public int roomLady = 6; // Hay que poner un +1 de lo que es en verdad.
     private int indexSL = 3;
-    public int roomSL = 10;
+    public int roomSL = 11;
 
     // ÍNDICES DE LAS ROOMS
     public static int indiceRoomActual;

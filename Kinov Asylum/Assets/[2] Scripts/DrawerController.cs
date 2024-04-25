@@ -11,9 +11,10 @@ public enum DrawerStates { Empty, Pill, Simon, SimonAndPill };
 
 public class DrawerController : MonoBehaviour
 {
-    public static Dictionary<int, DrawerStates> levelsDrawerStates = new Dictionary<int, DrawerStates>();
     // El int del dictionary indica el número de la room. Significa que esto está diseñado para que haya
     // solo un cajón por room :p
+    public static Dictionary<int, DrawerStates> levelsDrawerStates = new Dictionary<int, DrawerStates>();
+
 
     [SerializeField] private Transform trans;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -31,6 +32,43 @@ public class DrawerController : MonoBehaviour
     private bool CanOpenDrawer = false;
     private bool isOpened = false;
 
+    public void DisablePill()
+    {
+        pill.enabled = false;
+
+        var currentState = levelsDrawerStates[RoomCounter.RoomNumber];
+
+        if (currentState == DrawerStates.Pill)
+        {
+            currentState = DrawerStates.Empty;
+        }
+        else if (currentState == DrawerStates.SimonAndPill)
+        {
+            currentState = DrawerStates.Simon;        
+        }
+
+        levelsDrawerStates[RoomCounter.RoomNumber] = currentState;
+    }
+
+    public void DisableSimon()
+    {
+        simon.enabled = false;
+
+        var currentState = levelsDrawerStates[RoomCounter.RoomNumber];
+
+        if (currentState == DrawerStates.Simon)
+        {
+            currentState = DrawerStates.Empty;
+        }
+        else if (currentState == DrawerStates.SimonAndPill)
+        {
+            currentState = DrawerStates.Pill;
+
+
+        }
+
+        levelsDrawerStates[RoomCounter.RoomNumber] = currentState;
+    }
 
     void Start()
     {
@@ -150,7 +188,6 @@ public class DrawerController : MonoBehaviour
             switch (currentState)
             {            
                 case DrawerStates.Simon:
-
                     simon.enabled = true;
 
                     break;
@@ -173,4 +210,6 @@ public class DrawerController : MonoBehaviour
             drawer.enabled = false;
         }
     }
+
+
 }

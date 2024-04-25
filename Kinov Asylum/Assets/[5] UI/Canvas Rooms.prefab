@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a089c2c5a1c444bae97ce5c7026c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickClip: {fileID: 0}
+  clickClip: {fileID: 8300000, guid: 95f3a57f32abe91448d889c2ef5187ff, type: 3}
 --- !u!95 &703103481297117676
 Animator:
   serializedVersion: 5
@@ -630,7 +630,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 64.4, y: 80.1}
+  m_AnchoredPosition: {x: 73.1, y: 53.9}
   m_SizeDelta: {x: 104.1545, y: 78.1159}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3748723663977735780
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 219815713450289240}
+      - m_Target: {fileID: 7832030720665593506}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: Pill
         m_Mode: 1
@@ -764,7 +764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.32576284, y: 0.45747438}
   m_AnchorMax: {x: 0.32576284, y: 0.45747438}
-  m_AnchoredPosition: {x: 9.800034, y: -7.5999756}
+  m_AnchoredPosition: {x: -0.00021362305, y: -0.000016212463}
   m_SizeDelta: {x: 107.81, y: 80.8564}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4686596474619052759

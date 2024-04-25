@@ -15,6 +15,7 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         playerController = GameObject.Find("Player")?.GetComponent<PlayerController>();
+        drawerController = GameObject.Find("Drawer")?.GetComponent<DrawerController>();
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -24,7 +25,6 @@ public class UIController : MonoBehaviour
         audioSource.PlayOneShot(clickClip);
         RoomCounter.isInActualRoom = true;
         RoomCounter.indiceRoomActual = RoomCounter.indiceRoomAnterior = RoomCounter.RoomNumber = 0;
-        drawerController = GameObject.Find("Drawer")?.GetComponent<DrawerController>();
         DrawerController.levelsDrawerStates.Clear();
         SceneManager.LoadScene("Room0");
     }
@@ -46,21 +46,13 @@ public class UIController : MonoBehaviour
         if (PlayerController.health < 100)
         {
             playerController.TakeDamage(-10);
-            drawerController.pill.enabled = false;
-
-            //DrawerController.levelsDrawerStates[RoomCounter.RoomNumber] = drawerController.DrawerState{ 0 };
-
-            Debug.Log("Health + 10");
+            drawerController.DisablePill();
         }
     }
 
     public void Simon()
     {
         playerController.TakeDamage(10);
-        //DrawerController.levelsDrawerStates = DrawerController.levelsDrawerStates.< RoomCounter.RoomNumber, DrawerStates.Empty >;
-
-        //currentPlayerState = PlayerStates.InvertedLocomotion;
-
-        drawerController.simon.enabled = false;
+        drawerController.DisableSimon();
     }
 }

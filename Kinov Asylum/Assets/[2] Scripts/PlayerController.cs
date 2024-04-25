@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip glassStepsClip;
 
     // OTROS
-    private static bool CanGoBack;
+    public static bool CanGoBack;
     //private bool SLActivate = false;
 
 
@@ -83,6 +83,12 @@ public class PlayerController : MonoBehaviour
         StaminaBar = canvas.transform.Find("Stamina Bar/Stamina").GetComponent<Image>();
         HealthBar = canvas.transform.Find("Stamina Bar/Health").GetComponent<Image>();
         HealthBar.fillAmount = health / 100f;
+
+        // BackDoor Player Position
+        if (!RoomCounter.isInActualRoom)
+        {
+            transform.position = GameObject.Find("Door").GetComponent<Transform>().position - new Vector3(2, 0, 0);
+        }
 
         if (GameObject.Find("Poulette") == null)
         {

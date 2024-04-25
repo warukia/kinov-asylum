@@ -17,13 +17,12 @@ public class BackDoorStates : MonoBehaviour
     {
         roomCounter = GameObject.Find("GameController").GetComponent<RoomCounter>();
         //if (roomCounter.RoomUpdater == roomCounter.roomSL+1)
-        if (RoomCounter.RoomNumber == roomCounter.roomSL + 1)
+        if (RoomCounter.RoomNumber == roomCounter.roomSL + 1 ||
+            RoomCounter.RoomNumber == roomCounter.roomLady + 1 ||
+            RoomCounter.RoomNumber == roomCounter.roomSL ||
+            RoomCounter.RoomNumber == roomCounter.roomLady)
         {
-            boxCollider2D.isTrigger = false;
-        }
-        else
-        {
-            boxCollider2D.isTrigger = true;
+            PlayerController.CanGoBack = false;
         }
     }
 
