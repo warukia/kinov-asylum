@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed * .8f);
+            animator.SetBool("isJumpingHash", true);
         }
 
         // Movimiento del personaje (caminar y esprintar).
