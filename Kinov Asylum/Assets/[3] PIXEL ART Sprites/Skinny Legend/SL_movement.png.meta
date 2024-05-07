@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 406b2fd110c918745bbe74801066bd2c
+guid: a4da96d65132daa4685fc9af3de4d109
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -141,7 +141,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skinny Legend_0
+      name: SL_movement_0
       rect:
         serializedVersion: 2
         x: 0
@@ -155,14 +155,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1858ede05f23a9947871dd77e23632bc
-      internalID: -966616259
+      spriteID: 7a0e1dd086e6d7747a2ebab465911741
+      internalID: -358683578
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skinny Legend_1
+      name: SL_movement_1
       rect:
         serializedVersion: 2
         x: 269
@@ -176,14 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e8faa8a75e11fe4e84942c6f2fd17b9
-      internalID: -687473693
+      spriteID: 4b097050a783eaf419ae49b311e08c32
+      internalID: 1271804666
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skinny Legend_2
+      name: SL_movement_2
       rect:
         serializedVersion: 2
         x: 538
@@ -197,14 +197,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4faadf38f5c27a54b957d64275f3b417
-      internalID: 568146115
+      spriteID: e0a04dfde32d40949b089a5cc520a8d8
+      internalID: 1123956417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skinny Legend_3
+      name: SL_movement_3
       rect:
         serializedVersion: 2
         x: 807
@@ -218,29 +218,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: beb63404ea904e84e96b6aec83a2bade
-      internalID: 1098802191
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Skinny Legend_4
-      rect:
-        serializedVersion: 2
-        x: 1076
-        y: 0
-        width: 269
-        height: 280
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d571ed9ee708e334cb984853ab681014
-      internalID: 1524437057
+      spriteID: f43e4eb8dd73bd74e8aceacd351c1c84
+      internalID: -679546373
       vertices: []
       indices: 
       edges: []
@@ -256,11 +235,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Skinny Legend_0: -966616259
-      Skinny Legend_2: 568146115
-      Skinny Legend_1: -687473693
-      Skinny Legend_3: 1098802191
-      Skinny Legend_4: 1524437057
+      SL_movement_0: -358683578
+      SL_movement_1: 1271804666
+      SL_movement_3: -679546373
+      SL_movement_2: 1123956417
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

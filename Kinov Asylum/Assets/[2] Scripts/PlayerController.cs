@@ -85,10 +85,10 @@ public class PlayerController : MonoBehaviour
         HealthBar.fillAmount = health / 100f;
 
         // BackDoor Player Position
-        if (!RoomCounter.isInActualRoom)
-        {
-            transform.position = GameObject.Find("Door").GetComponent<Transform>().position - new Vector3(2, 0, 0);
-        }
+        //if (!RoomCounter.isInActualRoom)
+        //{
+        //    transform.position = GameObject.Find("Door").GetComponent<Transform>().position - new Vector3(2, 0, 0);
+        //}
 
         if (GameObject.Find("Poulette") == null)
         {
@@ -133,6 +133,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed * .8f);
             animator.SetBool("isJumpingHash", true);
+        }
+        else if (IsGrounded())
+        {
+            animator.SetBool("isJumpingHash", false);
         }
 
         // Movimiento del personaje (caminar y esprintar).
@@ -284,7 +288,7 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(5);
-        Debug.Log("now you can escape from sl");
+        Debug.Log("Now you can escape from Skinny Legend");
         currentPlayerState = PlayerStates.Locomotion;
     }
 

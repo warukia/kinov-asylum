@@ -10,7 +10,7 @@ public class SkinnyLegend : MonoBehaviour
     public SkinnyLegendActivation skinnyLegendActivation;
 
     public int secondsActivation = 5;
-    public float speed = 6f;
+    private float speed = 5.2f;
     public bool IsActive = false;
 
     void Update()
