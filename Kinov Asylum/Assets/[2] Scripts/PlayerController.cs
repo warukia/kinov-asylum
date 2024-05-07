@@ -220,6 +220,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed * .8f);
+            animator.SetBool("isJumpingHash", true);
+        }
+        else if (IsGrounded())
+        {
+            animator.SetBool("isJumpingHash", false);
         }
 
         // Movimiento del personaje (caminar y esprintar).
@@ -287,7 +292,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isWalkingHash", false);
 
         rb.velocity = Vector2.zero;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         Debug.Log("Now you can escape from Skinny Legend");
         currentPlayerState = PlayerStates.Locomotion;
     }

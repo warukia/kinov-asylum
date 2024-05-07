@@ -5,14 +5,20 @@ using UnityEngine;
 public class SkinnyLegendActivation : MonoBehaviour
 {
     [SerializeField] BoxCollider2D boxCollider;
-    public bool IsActive = false;
+    [SerializeField] AudioSource audioSource;
+    public SkinnyLegend skinnyLegendScript;
+    public AudioClip slThemeClip;
+    public BoxCollider2D leftWallCollider;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            IsActive = true;
+            skinnyLegendScript.IsActive = true;
+            Destroy(leftWallCollider);
             Destroy(boxCollider);
+            audioSource.PlayOneShot(slThemeClip, 1f);
         }
     }
+
 }
