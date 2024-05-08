@@ -288,7 +288,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ebbc2cde56814264b94fec0f646990f3, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.4
   m_Pitch: 1
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 207120481}
   m_Layer: 5
   m_Name: StartGameButton
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -595,7 +595,7 @@ GameObject:
   - component: {fileID: 793687897}
   m_Layer: 5
   m_Name: ExitButton
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -872,7 +872,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a089c2c5a1c444bae97ce5c7026c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickClip: {fileID: 8300000, guid: 95f3a57f32abe91448d889c2ef5187ff, type: 3}
+  buttonClickClip: {fileID: 8300000, guid: 2a8aa9d92d68c1e44ba43da7e1fde9d6, type: 3}
+  buttonOnTopClip: {fileID: 8300000, guid: 566a2fc250422054e9574f7efc10699f, type: 3}
 --- !u!114 &1547429562
 MonoBehaviour:
   m_ObjectHideFlags: 0

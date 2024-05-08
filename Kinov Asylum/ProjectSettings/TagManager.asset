@@ -16,6 +16,7 @@ TagManager:
   - Puddle
   - Glass
   - CeilingBricks
+  - Button
   layers:
   - Default
   - TransparentFX

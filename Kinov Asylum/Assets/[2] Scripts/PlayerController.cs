@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed * .8f);
+            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed * .78f);
             animator.SetBool("isJumpingHash", true);
         }
         else if (IsGrounded())

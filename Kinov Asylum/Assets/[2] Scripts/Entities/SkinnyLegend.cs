@@ -10,10 +10,10 @@ public class SkinnyLegend : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource audioSource;
     public AudioClip SLShoutingClip;
+    public AudioClip SLBonesChasingClip;
     public SkinnyLegendActivation skinnyLegendActivation;
 
-    private int secondsActivation = 2;
-    private float speed = 5.1f;
+    private float speed = 4.88f;
     public bool IsActive = false;
 
     void Update()
@@ -29,14 +29,19 @@ public class SkinnyLegend : MonoBehaviour
     {
         // Aparición de Skinny Legend
         IsActive = false;
+        rb.velocity = new Vector2(70, 0);
         audioSource.PlayOneShot(SLShoutingClip, .7f);
         animator.SetBool("isScreaming", true);
 
+        yield return new WaitForSeconds(.1f);
+        rb.velocity = new Vector2(.5f, 0);
+
         // Comienzo de la run
 
-        yield return new WaitForSeconds(secondsActivation);
+        yield return new WaitForSeconds(1.8f);
 
         animator.SetBool("isScreaming", false);
+        audioSource.PlayOneShot(SLBonesChasingClip, 1);
         rb.velocity = new Vector2(speed, 0);
     }
 }

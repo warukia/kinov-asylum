@@ -10,7 +10,8 @@ public class UIController : MonoBehaviour
     private DrawerController drawerController;
     private PlayerController playerController;
 
-    public AudioClip clickClip;
+    public AudioClip buttonClickClip;
+    public AudioClip buttonOnTopClip;
 
     private void Start()
     {
@@ -22,24 +23,31 @@ public class UIController : MonoBehaviour
     public void StartGame()
     {
         // Reseteamos datos
-        audioSource.PlayOneShot(clickClip);
+        audioSource.PlayOneShot(buttonClickClip);
         RoomCounter.isInActualRoom = true;
         RoomCounter.indiceRoomActual = RoomCounter.indiceRoomAnterior = RoomCounter.RoomNumber = 0;
         DrawerController.levelsDrawerStates.Clear();
+        StartCoroutine(StartGameDelay());
+    }
+
+    IEnumerator StartGameDelay()
+    {
+        yield return new WaitForSeconds(.9f);
         SceneManager.LoadScene("Room0");
     }
 
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
-        audioSource.PlayOneShot(clickClip);
+        audioSource.PlayOneShot(buttonClickClip);
     }
 
     public void ExitGame()
     {
         Application.Quit();
-        audioSource.PlayOneShot(clickClip);
+        audioSource.PlayOneShot(buttonClickClip);
     }
+
 
     public void Pill()
     {
