@@ -8,7 +8,7 @@ public class CeilingBricks : MonoBehaviour
     [SerializeField] Collider2D col;
     public CeilingBricksActivate ceilingBricksActivate;
 
-    private float floorPos = -3.05f;
+    private float floorPos = -3.35f;
 
 
     void Start()

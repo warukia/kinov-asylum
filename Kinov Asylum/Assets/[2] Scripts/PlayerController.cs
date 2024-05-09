@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public enum PlayerStates { Locomotion, Closet, Dialogue, Death, CantMoveSL, InvertedLocomotion };
+public enum PlayerStates { Locomotion, Closet, Dialogue, Death, CantMoveDialogues, CantMoveSL, InvertedLocomotion };
 /* Sirve para enumerar diferentes estados de un personaje. Por ejemplo a un policia, se le pueden poner
    diferentes estados como patrullar, perseguir negros, y disparar. De esta manera podremos cambiar de
    estado más fácilmente y nos ahorraremos bastantes booleanos.
@@ -49,9 +49,8 @@ public class PlayerController : MonoBehaviour
     // MOVIMIENTO ENTRE ROOMS
     private GameObject door;
     private RoomCounter roomCounter;
-    public AudioClip doorOpeningClip;
-    public AudioClip doorClosingClip;
     public bool pouletteCanAdvance;
+    public static bool CanGoBack;
 
     // STAMINA
     public Image StaminaBar;
@@ -67,10 +66,11 @@ public class PlayerController : MonoBehaviour
 
     // SONIDOS
     public AudioClip glassStepsClip;
+    public AudioClip doorClosingClip;
+    public AudioClip doorOpeningClip;
 
-    // OTROS
-    public static bool CanGoBack;
-    //private bool SLActivate = false;
+
+
 
 
     void Start()
@@ -84,12 +84,6 @@ public class PlayerController : MonoBehaviour
         HealthBar = canvas.transform.Find("Stamina Bar/Health").GetComponent<Image>();
         HealthBar.fillAmount = health / 100f;
 
-        // BackDoor Player Position
-        //if (!RoomCounter.isInActualRoom)
-        //{
-        //    transform.position = GameObject.Find("Door").GetComponent<Transform>().position - new Vector3(2, 0, 0);
-        //}
-
         if (GameObject.Find("Poulette") == null)
         {
             pouletteCanAdvance = true;
@@ -102,12 +96,18 @@ public class PlayerController : MonoBehaviour
         if (GameObject.Find("Lady") == null) ladyCanAdvance = true;
         else ladyCanAdvance = false;
 
-        //source.PlayOneShot(doorClosingClip);
-
-        //door = GameObject.Find("Door");
-        //roomCounter = door.GetComponent<RoomCounter>();
         roomCounter = GameObject.Find("GameController").GetComponent<RoomCounter>();
     }
+
+
+
+
+
+
+
+
+
+
 
     private void ProcessLocomotion()
     {
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed * .78f);
             animator.SetBool("isJumpingHash", true);
         }
-        else if (IsGrounded())
+        else if (IsGrounded() && rb.velocity.y == 0f)
         {
             animator.SetBool("isJumpingHash", false);
         }
@@ -171,6 +171,9 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isRunningHash", false);
         }
 
+        // DIALOGUES
+        //if ()
+
         // LADY inverted controllers
         if (invertedMovementOn)
         {
@@ -196,6 +199,16 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+
+
+
+
+
+
+
+
+
 
     private void ProcessInvertedLocomotion()
     {
@@ -274,6 +287,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
+
+
+
+
+
+
+
+    private void ProcessCantMoveDialogues()
+    {
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     private void ProcessCloset() // Está dentro del amario y permite salir 
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -284,6 +322,11 @@ public class PlayerController : MonoBehaviour
             currentPlayerState = PlayerStates.Locomotion;
         }
     }
+
+
+
+
+
 
     private IEnumerator ProcessCantMoveSL() // Se queda quieta mientras se reproduce la cinemática de Skinny Legend
     {
@@ -297,17 +340,27 @@ public class PlayerController : MonoBehaviour
         currentPlayerState = PlayerStates.Locomotion;
     }
 
+
+
+
+
+
     private IEnumerator ProcessDeath() // Muere
     {
         int seconds = 2;
 
         yield return new WaitForSeconds(seconds);
 
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("02_GameOver");
         health = 100f;
         animator.SetBool("Die", false);
         currentPlayerState = PlayerStates.Locomotion;
     }
+
+
+
+
+
 
     void Update()
     {
@@ -329,11 +382,6 @@ public class PlayerController : MonoBehaviour
                 ProcessInvertedLocomotion();
                 break;
         }
-
-        //if (DialogueManager.GetInstance().dialogueIsPlaying)
-        //{
-        //    return;
-        //}
     }
 
     private bool IsGrounded() // Cuando está en colisión con el suelo nos permite saltar. 

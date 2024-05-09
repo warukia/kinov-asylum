@@ -991,7 +991,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1092202207}
   - component: {fileID: 1092202209}
-  - component: {fileID: 1092202208}
   m_Layer: 6
   m_Name: SL Room_2
   m_TagString: Untagged
@@ -1014,32 +1013,6 @@ Transform:
   m_Father: {fileID: 270678623}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1092202208
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1092202206}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -49.844627, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 33.333332, y: 9.033334}
-    newSize: {x: 33.333332, y: 9.033334}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.34518433, y: 9.033334}
-  m_EdgeRadius: 0
 --- !u!212 &1092202209
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1865,8 +1838,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458847075}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.2888, y: 0.2081, z: 0}
-  m_LocalScale: {x: 8.690319, y: 9.301007, z: 0.8128099}
+  m_LocalPosition: {x: -14.383, y: 0.276, z: 0}
+  m_LocalScale: {x: 16.879206, y: 9.436802, z: 0.8128099}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 778071068}

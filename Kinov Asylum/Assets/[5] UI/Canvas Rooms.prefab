@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a089c2c5a1c444bae97ce5c7026c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickClip: {fileID: 8300000, guid: 95f3a57f32abe91448d889c2ef5187ff, type: 3}
+  buttonClickClip: {fileID: 0}
+  buttonOnTopClip: {fileID: 0}
 --- !u!95 &703103481297117676
 Animator:
   serializedVersion: 5

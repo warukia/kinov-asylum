@@ -626,7 +626,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1087524217}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -666,7 +666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.4117647}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -999,6 +999,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Rooms
       objectReference: {fileID: 0}
+    - target: {fileID: 2053781899595483988, guid: 25693a206691d974694d9c6bd7fa3737, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189949305845551374, guid: 25693a206691d974694d9c6bd7fa3737, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425746090093897145, guid: 25693a206691d974694d9c6bd7fa3737, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797847765385351933, guid: 25693a206691d974694d9c6bd7fa3737, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6255808898299083174, guid: 25693a206691d974694d9c6bd7fa3737, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1006,6 +1022,14 @@ PrefabInstance:
     - target: {fileID: 6255808898299083174, guid: 25693a206691d974694d9c6bd7fa3737, type: 3}
       propertyPath: m_SortingLayerID
       value: -561418183
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405675361866366252, guid: 25693a206691d974694d9c6bd7fa3737, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9195124344009058616, guid: 25693a206691d974694d9c6bd7fa3737, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25693a206691d974694d9c6bd7fa3737, type: 3}

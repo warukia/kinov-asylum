@@ -32,13 +32,13 @@ public class UIController : MonoBehaviour
 
     IEnumerator StartGameDelay()
     {
-        yield return new WaitForSeconds(.9f);
+        yield return new WaitForSeconds(.4f);
         SceneManager.LoadScene("Room0");
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("01_MainMenu");
         audioSource.PlayOneShot(buttonClickClip);
     }
 
