@@ -470,7 +470,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("CeilingBricks"))
         {
             GameOverController.enemyKilled = "Traps";
-            TakeDamage(20);
+            Destroy(collision.gameObject.GetComponent<BoxCollider2D>());
+            TakeDamage(15);
         }
         if (collision.gameObject.CompareTag("Glass") && !isImmune)
         {

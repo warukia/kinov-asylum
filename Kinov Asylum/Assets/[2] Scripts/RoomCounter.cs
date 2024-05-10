@@ -25,9 +25,13 @@ public class RoomCounter : MonoBehaviour
 
     // Escenas especiales
     private int indexLady = 2; 
-    public int roomLady = 6; // Hay que poner un +1 de lo que es en verdad.
+    public int roomLady = 16; // Hay que poner un +1 de lo que es en verdad.
     private int indexSL = 3;
-    public int roomSL = 11;
+    public int roomSL = 31;
+    private int indexChillmeister;
+    public int roomChillmeister = 34;
+    private int indexViktor;
+    public int roomViktor = 61;
 
     // ÍNDICES DE LAS ROOMS
     public static int indiceRoomActual;

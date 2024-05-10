@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class CeilingBricks : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb;
     [SerializeField] Collider2D col;
+    [SerializeField] Animator animator;
+    [SerializeField] AudioSource audioSource;
+   
     public CeilingBricksActivate ceilingBricksActivate;
 
-    private float floorPos = -3.35f;
+    private float floorPos = -3f;
+    public AudioClip ceilingFallClip;
 
 
     void Start()
@@ -20,12 +23,18 @@ public class CeilingBricks : MonoBehaviour
     {
         if (ceilingBricksActivate.IsActive)
         {
-            rb.gravityScale = 1;
+            animator.SetBool("isFalling", true);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(ceilingFallClip, 2f);
+            }
+            ceilingBricksActivate.IsActive = false;
         }
 
         if (transform.position.y <= floorPos)
         {
-            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+            //ceilingBricksActivate.IsActive = false;
+            animator.SetBool("isOnFloor", true);
             Destroy(col);
         }
     }

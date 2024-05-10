@@ -12,7 +12,7 @@ public class CeilingBricksActivate : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             IsActive = true;
-            Destroy(boxCollider);
+            Destroy(gameObject);
         }
     }
 }
