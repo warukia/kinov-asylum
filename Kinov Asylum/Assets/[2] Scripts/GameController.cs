@@ -13,7 +13,17 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        transition = GameObject.Find("Canvas Rooms")?.transform.Find("Crossfade").GetComponent<Animator>();
+        if (GameObject.Find("MainMenu") != null)
+        {
+            // Esto lo que hace es pillar la transición desde el MainMenu porque el Canvas de ahí se llama
+            // de distinta manera y si no pongo eso no detecta ninguno.
+            transition = GameObject.Find("MainMenu").transform.Find("Crossfade").GetComponent<Animator>();
+        }
+        else
+        {
+            transition = GameObject.Find("Canvas Rooms")?.transform.Find("Crossfade").GetComponent<Animator>();
+        }
+
         if (GameObject.Find("Canvas Rooms") != null) canvas = GameObject.Find("Canvas Rooms").GetComponent<Canvas>();
 
         if (GameObject.Find("Drawer") == null && GameObject.Find("Canvas Rooms") != null)

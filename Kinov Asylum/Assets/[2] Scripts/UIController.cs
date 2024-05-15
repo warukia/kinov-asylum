@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour
     private AudioSource audioSource;
     private DrawerController drawerController;
     private PlayerController playerController;
+    private GameController gameController;
 
     public AudioClip buttonClickClip;
     public AudioClip buttonOnTopClip;
@@ -17,6 +18,7 @@ public class UIController : MonoBehaviour
     {
         playerController = GameObject.Find("Player")?.GetComponent<PlayerController>();
         drawerController = GameObject.Find("Drawer")?.GetComponent<DrawerController>();
+        gameController = GameObject.Find("GameController")?.GetComponent <GameController>();
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -27,14 +29,14 @@ public class UIController : MonoBehaviour
         RoomCounter.isInActualRoom = true;
         RoomCounter.indiceRoomActual = RoomCounter.indiceRoomAnterior = RoomCounter.RoomNumber = 0;
         DrawerController.levelsDrawerStates.Clear();
-        StartCoroutine(StartGameDelay());
+        gameController.LoadNextRoom(4);
     }
 
-    IEnumerator StartGameDelay()
-    {
-        yield return new WaitForSeconds(.4f);
-        SceneManager.LoadScene("Room0");
-    }
+    //IEnumerator StartGameDelay()
+    //{
+    //    yield return new WaitForSeconds(.4f);
+    //    SceneManager.LoadScene("Room0");
+    //}
 
     public void MainMenu()
     {

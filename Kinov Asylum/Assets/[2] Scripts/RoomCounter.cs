@@ -24,14 +24,14 @@ public class RoomCounter : MonoBehaviour
     private int numB = 10;
 
     // Escenas especiales
-    private int indexLady = 2; 
-    public int roomLady = 16; // Hay que poner un +1 de lo que es en verdad.
+    private int indexLady = 2;
+    public int roomLady; // Hay que poner un +1 de lo que es en verdad.
     private int indexSL = 3;
-    public int roomSL = 31;
+    public int roomSL;
     private int indexChillmeister;
-    public int roomChillmeister = 34;
+    public int roomChillmeister;
     private int indexViktor;
-    public int roomViktor = 61;
+    public int roomViktor;
 
     // ÍNDICES DE LAS ROOMS
     public static int indiceRoomActual;
@@ -39,6 +39,14 @@ public class RoomCounter : MonoBehaviour
     public int indiceRoomSiguiente;
 
     public static bool isInActualRoom;
+
+    private void Awake()
+    {
+        roomLady = 11;
+        roomSL = 21;
+        roomChillmeister = 26;
+        roomViktor = 41;
+    }
 
     void Start() // Obtiene los componentes necesarios al empezar la room 
     {
@@ -65,6 +73,7 @@ public class RoomCounter : MonoBehaviour
                 }
                 else if (RoomNumber == roomLady - 1)
                 {
+                    Debug.Log("Loaded Lady room: " + roomLady);
                     gameController.LoadNextRoom(indexLady);
                 }
                 else
