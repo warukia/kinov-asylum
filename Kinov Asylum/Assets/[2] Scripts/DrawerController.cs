@@ -18,6 +18,7 @@ public class DrawerController : MonoBehaviour
 
     [SerializeField] private Transform trans;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private AudioSource audioSource;
     private Canvas canvas;
 
     public UnityEngine.UI.Image drawer;
@@ -31,6 +32,10 @@ public class DrawerController : MonoBehaviour
 
     private bool CanOpenDrawer = false;
     private bool isOpened = false;
+
+    // AUDIOS
+    public AudioClip drawerOpenedClip;
+    public AudioClip drawerClosedClip;
 
     public void DisablePill()
     {
@@ -147,11 +152,13 @@ public class DrawerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) && !isOpened)
             {
+                audioSource.PlayOneShot(drawerOpenedClip, 1f);
                 isOpened = true;
                 DrawerState(true);
             }
             else if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) && isOpened)
             {
+                audioSource.PlayOneShot(drawerClosedClip, 1f);
                 isOpened = false;
                 DrawerState(false);
             }
@@ -173,7 +180,14 @@ public class DrawerController : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) CanOpenDrawer = false;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            CanOpenDrawer = false;
+            if (isOpened)
+            {
+                if (!audioSource.isPlaying) audioSource.PlayOneShot(drawerClosedClip, 1f);
+            }
+        }
     }
 
     // Abre el cajón

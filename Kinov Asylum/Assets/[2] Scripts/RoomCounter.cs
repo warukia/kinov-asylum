@@ -20,17 +20,17 @@ public class RoomCounter : MonoBehaviour
     public static int RoomNumber; // Número room actual (es el que aparece en la UI)
 
     // PLAYABLE SCENES BUILD INDEX
-    private int numA = 5;
-    private int numB = 10;
+    private int numA = 7;
+    private int numB = 12;
 
     // Escenas especiales
     private int indexLady = 2;
     public int roomLady; // Hay que poner un +1 de lo que es en verdad.
     private int indexSL = 3;
     public int roomSL;
-    private int indexChillmeister;
+    private int indexChillmeister = 4;
     public int roomChillmeister;
-    private int indexViktor;
+    private int indexViktor = 5;
     public int roomViktor;
 
     // ÍNDICES DE LAS ROOMS
@@ -75,6 +75,14 @@ public class RoomCounter : MonoBehaviour
                 {
                     Debug.Log("Loaded Lady room: " + roomLady);
                     gameController.LoadNextRoom(indexLady);
+                }
+                else if (RoomNumber == roomChillmeister - 1)
+                {
+                    gameController.LoadNextRoom(indexChillmeister);
+                }
+                else if (RoomNumber == roomViktor - 1)
+                {
+                    gameController.LoadNextRoom(indexViktor);
                 }
                 else
                 {

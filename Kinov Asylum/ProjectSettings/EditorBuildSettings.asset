@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/[1] Scenes/S_Room_SkinnyLegend.unity
     guid: 8060f8878caa5894dafe920db16b4424
   - enabled: 1
+    path: Assets/[1] Scenes/S_Room_Chillmeister.unity
+    guid: b97d6f59e4ec09f41ae4003f339a531a
+  - enabled: 1
+    path: Assets/[1] Scenes/S_Room_Viktor.unity
+    guid: cb7cdac2a2fba78468a8ab2192dfa821
+  - enabled: 1
     path: Assets/[1] Scenes/Room0.unity
     guid: af4e6d41d6052134ab5be85c3d374afb
   - enabled: 1
