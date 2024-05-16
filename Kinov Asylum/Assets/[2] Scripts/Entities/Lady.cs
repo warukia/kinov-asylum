@@ -70,30 +70,16 @@ public class Lady : MonoBehaviour
         yield return new WaitForSeconds(.3f);
         switchImage.enabled = false;
 
-        yield return new WaitForSeconds(4);
-        playerController.invertedMovementOn = true;
-        switchImage.enabled = true;
+        //yield return new WaitForSeconds(4);
+        //playerController.invertedMovementOn = true;
+        //switchImage.enabled = true;
 
-        yield return new WaitForSeconds(.3f);
-        switchImage.enabled = false;
+        //yield return new WaitForSeconds(.3f);
+        //switchImage.enabled = false;
 
-        yield return new WaitForSeconds(5);
-        playerController.invertedMovementOn = false;
-        switchImage.enabled = true;
-
-        yield return new WaitForSeconds(.3f);
-        switchImage.enabled = false;
-
-        yield return new WaitForSeconds(4);
-        playerController.invertedMovementOn = true;
-        switchImage.enabled = true;
-
-        yield return new WaitForSeconds(.3f);
-        switchImage.enabled = false;
-
-        yield return new WaitForSeconds(5);
-        playerController.invertedMovementOn = false;
-        switchImage.enabled = true;
+        //yield return new WaitForSeconds(5);
+        //playerController.invertedMovementOn = false;
+        //switchImage.enabled = true;
 
         yield return new WaitForSeconds(.3f);
         switchImage.enabled = false;

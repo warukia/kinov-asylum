@@ -6,31 +6,40 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
     private DrawerController drawerController;
     private PlayerController playerController;
     private GameController gameController;
+    public GameObject creditsPanel;
 
     public AudioClip buttonClickClip;
-    public AudioClip buttonOnTopClip;
+    public AudioClip pillSwallowClip;
 
     private void Start()
     {
         playerController = GameObject.Find("Player")?.GetComponent<PlayerController>();
         drawerController = GameObject.Find("Drawer")?.GetComponent<DrawerController>();
         gameController = GameObject.Find("GameController")?.GetComponent <GameController>();
+
         audioSource = GetComponent<AudioSource>();
     }
 
     public void StartGame()
     {
         // Reseteamos datos
-        audioSource.PlayOneShot(buttonClickClip);
+        audioSource.PlayOneShot(buttonClickClip, 1f);
         RoomCounter.isInActualRoom = true;
         RoomCounter.indiceRoomActual = RoomCounter.indiceRoomAnterior = RoomCounter.RoomNumber = 0;
         DrawerController.levelsDrawerStates.Clear();
-        gameController.LoadNextRoom(4);
+        gameController.LoadNextRoom(6);
     }
+
+    public void Credits()
+    {
+        audioSource.PlayOneShot(buttonClickClip, 1f);
+        creditsPanel.SetActive(true);
+    }
+
 
     //IEnumerator StartGameDelay()
     //{
@@ -40,14 +49,14 @@ public class UIController : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("01_MainMenu");
         audioSource.PlayOneShot(buttonClickClip);
+        SceneManager.LoadScene("01_MainMenu");
     }
 
     public void ExitGame()
     {
-        Application.Quit();
         audioSource.PlayOneShot(buttonClickClip);
+        Application.Quit();
     }
 
 
@@ -55,6 +64,7 @@ public class UIController : MonoBehaviour
     {
         if (PlayerController.health < 100)
         {
+            audioSource.PlayOneShot(pillSwallowClip);
             playerController.TakeDamage(-10);
             drawerController.DisablePill();
         }
@@ -62,7 +72,9 @@ public class UIController : MonoBehaviour
 
     public void Simon()
     {
-        playerController.TakeDamage(10);
+        playerController.TakeDamage(30);
         drawerController.DisableSimon();
     }
+
+
 }

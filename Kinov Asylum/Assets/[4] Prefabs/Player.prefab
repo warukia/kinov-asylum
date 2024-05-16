@@ -189,7 +189,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7690524743611328641}
   boxCollider: {fileID: 7690524743611328643}
   animator: {fileID: 7690524743611328645}
-  source: {fileID: 8601903998237027855}
+  audioSource: {fileID: 8601903998237027855}
   gameController: {fileID: 0}
   roomController: {fileID: 0}
   damageTaken: 0
@@ -199,15 +199,17 @@ MonoBehaviour:
   runSpeed: 6
   invertedMovementOn: 0
   ladyCanAdvance: 0
-  doorOpeningClip: {fileID: 8300000, guid: 97fdf561c525c594bb76727a6d4f59d6, type: 3}
-  doorClosingClip: {fileID: 8300000, guid: 309795a711b86f840a3c1b693af50d8c, type: 3}
   pouletteCanAdvance: 0
   StaminaBar: {fileID: 0}
   Stamina: 100
   MaxStamina: 100
   RunCost: 25
   ChargeRate: 33
+  walkClip: {fileID: 8300000, guid: 92dd366701296804da5817a222746426, type: 3}
+  runClip: {fileID: 8300000, guid: 203dfb673c6702c43b0d9c0ca8459209, type: 3}
   glassStepsClip: {fileID: 8300000, guid: 8b41650658c7c46499e48191ce77dc29, type: 3}
+  doorClosingClip: {fileID: 8300000, guid: 309795a711b86f840a3c1b693af50d8c, type: 3}
+  doorOpeningClip: {fileID: 8300000, guid: 97fdf561c525c594bb76727a6d4f59d6, type: 3}
 --- !u!95 &7690524743611328645
 Animator:
   serializedVersion: 5

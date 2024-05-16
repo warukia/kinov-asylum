@@ -44,8 +44,8 @@ public class RoomCounter : MonoBehaviour
     {
         roomLady = 11;
         roomSL = 21;
-        roomChillmeister = 26;
-        roomViktor = 41;
+        roomChillmeister = 24;
+        roomViktor = 31;
     }
 
     void Start() // Obtiene los componentes necesarios al empezar la room 

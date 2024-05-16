@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private Animator animator;
-    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioSource audioSource;
     public GameController gameController;
     public RoomCounter roomController;
     private Canvas canvas;
@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
     private HideObject hideObjectScript;
 
     // SONIDOS
+    public AudioClip walkClip;
+    public AudioClip runClip;
     public AudioClip glassStepsClip;
     public AudioClip doorClosingClip;
     public AudioClip doorOpeningClip;
@@ -142,6 +144,7 @@ public class PlayerController : MonoBehaviour
         // Movimiento del personaje (caminar y esprintar).
         if (horizontal != 0)
         {
+
             animator.SetBool("isWalkingHash", true);
 
             if (running && (horizontal != 0 || Input.GetAxisRaw("Vertical") != 0))
@@ -170,6 +173,21 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isWalkingHash", false);
             animator.SetBool("isRunningHash", false);
         }
+
+        // Controlador de Sonidos
+        if (animator.GetBool("isWalkingHash"))
+        {
+            if (!audioSource.isPlaying && IsGrounded())
+            {
+                audioSource.PlayOneShot(walkClip, 1.3f);
+            }
+        }
+
+        if (!animator.GetBool("isWalkingHash") || animator.GetBool("isJumpingHash"))
+        {
+            audioSource.Stop();
+        }
+
 
         // DIALOGUES
         //if ()
@@ -443,7 +461,7 @@ public class PlayerController : MonoBehaviour
         {
             // Vuelve a permitir que vaya atrás
             CanGoBack = true;
-            source.PlayOneShot(doorOpeningClip);
+            audioSource.PlayOneShot(doorOpeningClip);
 
             //roomCounter.RoomUpdater++;
             RoomCounter.RoomNumber++;
@@ -476,7 +494,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Glass") && !isImmune)
         {
             GameOverController.enemyKilled = "Traps";
-            source.PlayOneShot(glassStepsClip);
+            audioSource.PlayOneShot(glassStepsClip);
             TakeDamage(5);
             ThreeImmunitySeconds();
         }
