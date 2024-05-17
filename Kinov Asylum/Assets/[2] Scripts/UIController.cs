@@ -28,6 +28,7 @@ public class UIController : MonoBehaviour
     {
         // Reseteamos datos
         audioSource.PlayOneShot(buttonClickClip, 1f);
+        HarryDoor.isExploding = false;
         RoomCounter.isInActualRoom = true;
         RoomCounter.indiceRoomActual = RoomCounter.indiceRoomAnterior = RoomCounter.RoomNumber = 0;
         DrawerController.levelsDrawerStates.Clear();

@@ -88,5 +88,6 @@ public class Lady : MonoBehaviour
         Debug.Log("Game ended");
         playerController.ladyCanAdvance = true;
         harryController.allowedMovement = false;
+        HarryDoor.isExploding = true;
     }
 }
