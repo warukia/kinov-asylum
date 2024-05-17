@@ -17,6 +17,7 @@ TagManager:
   - Glass
   - CeilingBricks
   - Button
+  - Chillmeister
   layers:
   - Default
   - TransparentFX

@@ -17,6 +17,8 @@ public class Lady : MonoBehaviour
     private Image switchImage;
     public Harry harryController;
 
+    public static bool dialogueEnd;
+
     void Start()
     {
         playerObject = GameObject.Find("Player");
@@ -26,13 +28,17 @@ public class Lady : MonoBehaviour
         switchImage = canvas.transform.Find("Switch").GetComponent <Image>();
         switchImage.enabled = false;
 
-
-        StartCoroutine(Level());
+        dialogueEnd = false;
+        //StartCoroutine(Level());
     }
 
     void Update()
     {
-        
+        if (dialogueEnd)
+        {
+            StartCoroutine(Level());
+            dialogueEnd = false;
+        }
     }
 
     // Hay que añadir que se active el movimiento de Harry al iniciar el juego bueno un poco mas tarde y al finalizar.

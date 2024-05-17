@@ -39,6 +39,7 @@ public class UIDialogueAssistantLady : MonoBehaviour
                 {
                     // End here the conversation.
                     messageInt = 0;
+                    Lady.dialogueEnd = true;
                     Destroy(gameObject);
                 }
 
