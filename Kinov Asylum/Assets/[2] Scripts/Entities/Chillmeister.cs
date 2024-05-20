@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class Chillmeister : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private GameObject canvasDialogues;
+    public SpriteRenderer keyE;
+
     void Start()
     {
-        
+        keyE.enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (keyE.enabled && Input.GetKeyDown(KeyCode.E))
+        {
+            canvasDialogues.SetActive(true);
+
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")) keyE.enabled = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")) keyE.enabled = false;
     }
 }

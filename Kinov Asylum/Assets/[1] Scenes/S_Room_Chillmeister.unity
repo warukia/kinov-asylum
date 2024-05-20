@@ -202,7 +202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &189650728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -885,6 +885,7 @@ GameObject:
   - component: {fileID: 733644687}
   - component: {fileID: 733644686}
   - component: {fileID: 733644689}
+  - component: {fileID: 733644690}
   m_Layer: 0
   m_Name: Chillmeister
   m_TagString: Chillmeister
@@ -1007,6 +1008,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.038147, y: 7.8333335}
   m_EdgeRadius: 0
+--- !u!114 &733644690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733644685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cfda014d716b244bbed01a7a69bc210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasDialogues: {fileID: 189650727}
+  keyE: {fileID: 1262900912}
 --- !u!1 &928836554
 GameObject:
   m_ObjectHideFlags: 0
