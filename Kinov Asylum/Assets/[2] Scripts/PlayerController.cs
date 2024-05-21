@@ -290,6 +290,20 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isRunningHash", false);
         }
 
+        // Controlador de Sonidos
+        if (animator.GetBool("isWalkingHash"))
+        {
+            if (!audioSource.isPlaying && IsGrounded())
+            {
+                audioSource.PlayOneShot(walkClip, 1.3f);
+            }
+        }
+
+        if (!animator.GetBool("isWalkingHash") || animator.GetBool("isJumpingHash"))
+        {
+            audioSource.Stop();
+        }
+
         // LADY desactivar inverted movement
         if (!invertedMovementOn)
         {
@@ -498,6 +512,12 @@ public class PlayerController : MonoBehaviour
             TakeDamage(5);
             ThreeImmunitySeconds();
         }
+        if (collision.gameObject.CompareTag("BloodMonsters") && !isImmune)
+        {
+            GameOverController.enemyKilled = "Viktor";
+            TakeDamage(10);
+            ThreeImmunitySeconds();
+        }
 
         // POULETTE
         if (collision.gameObject.CompareTag("Poulette") && (currentPlayerState == PlayerStates.Locomotion))
@@ -534,6 +554,18 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("SL"))
         {
             GameOverController.enemyKilled = "SL";
+            TakeDamage(100);
+        }
+
+        // VIKTOR
+        if (collision.gameObject.CompareTag("SimonWall"))
+        {
+            GameOverController.enemyKilled = "Viktor";
+            TakeDamage(30);
+        }
+        if (collision.gameObject.CompareTag("SimonVoid"))
+        {
+            GameOverController.enemyKilled = "Viktor";
             TakeDamage(100);
         }
     }

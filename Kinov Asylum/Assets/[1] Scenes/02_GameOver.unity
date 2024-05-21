@@ -744,7 +744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1547429561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,7 +758,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1547429567}
+  creditsPanel: {fileID: 0}
   buttonClickClip: {fileID: 8300000, guid: 2a8aa9d92d68c1e44ba43da7e1fde9d6, type: 3}
+  pillSwallowClip: {fileID: 0}
 --- !u!114 &1547429562
 MonoBehaviour:
   m_ObjectHideFlags: 0

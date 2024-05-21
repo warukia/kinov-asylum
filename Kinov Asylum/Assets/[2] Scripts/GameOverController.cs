@@ -50,6 +50,14 @@ public class GameOverController : MonoBehaviour
     {
         yield return new WaitForSeconds(9);
         spriteRenderer.enabled = false;
+
+        animator.SetBool("SimonDeathHash", false);
+        animator.SetBool("SLDeathHash", false);
+        animator.SetBool("TrapsDeathHash", false);
+        animator.SetBool("LadyDeathHash", false);
+        animator.SetBool("PouletteDeathHash", false);
+        animator.SetBool("ViktorDeathHash", false);
+
         panelButtons.SetActive(true);
     }
 }

@@ -18,6 +18,10 @@ TagManager:
   - CeilingBricks
   - Button
   - Chillmeister
+  - BloodMonsters
+  - SimonWall
+  - SimonVoid
+  - Jeringuilla
   layers:
   - Default
   - TransparentFX

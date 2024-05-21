@@ -10,7 +10,7 @@ public class UIDialogueAssistantChillmeister : MonoBehaviour
     private TextMeshProUGUI messageText;
     private TextWriter.TextWriterSingle textWriterSingle;
     private PlayerController playerController;
-
+    
     private int messageInt;
 
     private void Awake()
