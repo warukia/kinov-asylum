@@ -22,6 +22,7 @@ TagManager:
   - SimonWall
   - SimonVoid
   - Jeringuilla
+  - FinalDoor
   layers:
   - Default
   - TransparentFX

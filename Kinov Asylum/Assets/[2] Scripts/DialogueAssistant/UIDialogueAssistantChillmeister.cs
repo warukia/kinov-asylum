@@ -31,10 +31,24 @@ public class UIDialogueAssistantChillmeister : MonoBehaviour
                 string[] messageArray = new string[]
                 {
                        // Yuliya despertando desconcertada.
-                       "YULIYA\nWhat..?",
-                       "YULIYA\nWhy was I unconscious?",
-                       "YULIYA\nThe last thing I remember is being with Viktor.",
-                       "YULIYA\nWhere could he be? I miss him...",
+                       "CHILLMEISTER\nValid to eat fingers.",
+                       "YULIYA\n?",
+                       "CHILLMEISTER\nYaay pelleds",
+                       "YULIYA\nWhat?",
+                       "CHILLMEISTER\nMy dream is eat cocaine",
+                       "CHILLMEISTER\nI cause salmonela",
+                       "YULIYA\nPlease stop",
+                       "CHILLMEISTER\nPee (lobotomy)",
+                       "YULIYA\n...",
+                       "YULIYA\nMaybe I should kill myself at this point.",
+                       "CHILLMEISTER\napaluajize. Have you met by any chance my little friend?",
+                       "YULIYA\nWho?",
+                       "CHILLMEISTER\nSimon, my little worm friend, only seeks hugs and friendship.",
+                       "CHILLMEISTER\nDo not mind his addiction to drugs, he is really lovely once you get to know him.",
+                       "CHILLMEISTER\nPerhaps you should give him a chance.",
+                       "YULIYA\nAre you talking about that disgusting worm?",
+                       "YULIYA\nI don't think I'm gonna give him a chance.",
+                       "CHILLMEISTER\nOkay fuck you *spits on you*",
                 };
                 if (messageInt >= messageArray.Length)
                 {

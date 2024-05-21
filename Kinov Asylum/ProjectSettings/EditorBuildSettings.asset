@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/[1] Scenes/02_GameOver.unity
     guid: 776154c50173f8d45a1951c91b2783e1
   - enabled: 1
+    path: Assets/[1] Scenes/03_Victory.unity
+    guid: 5cdf483ff9c5d5a41bebbe17bfc50330
+  - enabled: 1
     path: Assets/[1] Scenes/S_Room_Lady.unity
     guid: cce0ee8b1ba7d6f4dbc64f30346cb672
   - enabled: 1
@@ -23,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/[1] Scenes/S_Room_Viktor.unity
     guid: cb7cdac2a2fba78468a8ab2192dfa821
+  - enabled: 1
+    path: Assets/[1] Scenes/S_Room_VEncounter.unity
+    guid: 8df55b712ac761b4d8130f9e58c92c80
   - enabled: 1
     path: Assets/[1] Scenes/Room0.unity
     guid: af4e6d41d6052134ab5be85c3d374afb

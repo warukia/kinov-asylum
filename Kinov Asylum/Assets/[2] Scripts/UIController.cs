@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour
     private PlayerController playerController;
     private GameController gameController;
     public GameObject creditsPanel;
+    public Animator simonAnim;
 
     public AudioClip buttonClickClip;
     public AudioClip pillSwallowClip;
@@ -19,7 +20,8 @@ public class UIController : MonoBehaviour
     {
         playerController = GameObject.Find("Player")?.GetComponent<PlayerController>();
         drawerController = GameObject.Find("Drawer")?.GetComponent<DrawerController>();
-        gameController = GameObject.Find("GameController")?.GetComponent <GameController>();
+        gameController = GameObject.Find("GameController")?.GetComponent<GameController>();
+        simonAnim = GameObject.Find("OpenDrawer/Simon")?.GetComponent<Animator>();
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -32,7 +34,7 @@ public class UIController : MonoBehaviour
         RoomCounter.isInActualRoom = true;
         RoomCounter.indiceRoomActual = RoomCounter.indiceRoomAnterior = RoomCounter.RoomNumber = 0;
         DrawerController.levelsDrawerStates.Clear();
-        gameController.LoadNextRoom(6);
+        gameController.LoadNextRoom(8);
     }
 
     public void Credits()
@@ -41,17 +43,10 @@ public class UIController : MonoBehaviour
         creditsPanel.SetActive(true);
     }
 
-
-    //IEnumerator StartGameDelay()
-    //{
-    //    yield return new WaitForSeconds(.4f);
-    //    SceneManager.LoadScene("Room0");
-    //}
-
     public void MainMenu()
     {
         audioSource.PlayOneShot(buttonClickClip);
-        SceneManager.LoadScene("01_MainMenu");
+        gameController.LoadNextRoom(0);
     }
 
     public void ExitGame()
@@ -74,8 +69,13 @@ public class UIController : MonoBehaviour
     public void Simon()
     {
         playerController.TakeDamage(30);
-        drawerController.DisableSimon();
+        simonAnim.SetBool("simonAttack", true);
+        StartCoroutine(waitForAnimationEndSimon());
     }
 
-
+    private IEnumerator waitForAnimationEndSimon()
+    {
+        yield return new WaitForSeconds(.9f);
+        drawerController.DisableSimon();
+    }
 }

@@ -14,9 +14,9 @@ public class SimonWall2 : MonoBehaviour
 
     void Start()
     {
-        speed = -1.5f;
+        speed = -2f;
         originalPos = pos.position.x;
-        limitPos = 4f;
+        limitPos = 3.5f;
         hasInverted = false;
 
         rb.velocity = Vector2.zero;
@@ -28,7 +28,7 @@ public class SimonWall2 : MonoBehaviour
         if (pos.position.x <= limitPos && !hasInverted)
         {
             hasInverted = true;
-            speed *= -1;
+            speed = 4f;
             rb.velocity = new Vector2(speed, 0);
         }
 
@@ -42,8 +42,8 @@ public class SimonWall2 : MonoBehaviour
 
     private IEnumerator Movement()
     {
-        yield return new WaitForSeconds(13);
-        //speed = 1.5f;
+        yield return new WaitForSeconds(12);
+        speed = -2f;
         rb.velocity = new Vector2(speed, 0);
     }
 }

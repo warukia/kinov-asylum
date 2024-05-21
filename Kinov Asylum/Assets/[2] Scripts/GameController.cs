@@ -19,10 +19,15 @@ public class GameController : MonoBehaviour
             // de distinta manera y si no pongo eso no detecta ninguno.
             transition = GameObject.Find("MainMenu").transform.Find("Crossfade").GetComponent<Animator>();
         }
-        else
+        else if (GameObject.Find("Canvas Rooms") != null)
         {
             transition = GameObject.Find("Canvas Rooms")?.transform.Find("Crossfade").GetComponent<Animator>();
         }
+        else
+        {
+            transition = GameObject.Find("GameOver Canvas")?.transform.Find("Crossfade").GetComponent<Animator>();
+        }
+        
 
         if (GameObject.Find("Canvas Rooms") != null) canvas = GameObject.Find("Canvas Rooms").GetComponent<Canvas>();
 

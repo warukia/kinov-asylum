@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource audioSource;
+    public GameObject dialogueCanvas;
     public GameController gameController;
     public RoomCounter roomController;
     private Canvas canvas;
@@ -85,6 +86,15 @@ public class PlayerController : MonoBehaviour
         StaminaBar = canvas.transform.Find("Stamina Bar/Stamina").GetComponent<Image>();
         HealthBar = canvas.transform.Find("Stamina Bar/Health").GetComponent<Image>();
         HealthBar.fillAmount = health / 100f;
+
+        if (GameObject.Find("Canvas Dialogues") != null)
+        {
+            dialogueCanvas = GameObject.Find("Canvas Dialogues/DialogueAssistant");
+        }
+        else
+        {
+            dialogueCanvas = null;
+        }
 
         if (GameObject.Find("Poulette") == null)
         {
@@ -190,7 +200,16 @@ public class PlayerController : MonoBehaviour
 
 
         // DIALOGUES
-        //if ()
+        if (GameObject.Find("Canvas Dialogues") != null)
+        {
+            dialogueCanvas = GameObject.Find("Canvas Dialogues/DialogueAssistant");
+        }
+
+        if (dialogueCanvas != null)
+        {
+            rb.velocity = Vector2.zero;
+            currentPlayerState = PlayerStates.CantMoveDialogues;
+        }
 
         // LADY inverted controllers
         if (invertedMovementOn)
@@ -330,15 +349,18 @@ public class PlayerController : MonoBehaviour
 
     private void ProcessCantMoveDialogues()
     {
-        
+        currentPlayerState = PlayerStates.CantMoveDialogues;
+        animator.SetBool("isRunningHash", false);
+        animator.SetBool("isWalkingHash", false);
+
+        rb.velocity = Vector2.zero;
+
+        if (dialogueCanvas == null)
+        {
+            Debug.Log("Dialogue ended");
+            currentPlayerState = PlayerStates.Locomotion;
+        }
     }
-
-
-
-
-
-
-
 
 
 
@@ -412,6 +434,10 @@ public class PlayerController : MonoBehaviour
 
             case PlayerStates.InvertedLocomotion:
                 ProcessInvertedLocomotion();
+                break;
+
+            case PlayerStates.CantMoveDialogues:
+                ProcessCantMoveDialogues();
                 break;
         }
     }
@@ -490,6 +516,11 @@ public class PlayerController : MonoBehaviour
             //roomCounter.RoomUpdater--;
             RoomCounter.RoomNumber--;
             roomCounter.CalculateRoomIndex(1);
+        }
+
+        if (collision.gameObject.CompareTag("FinalDoor"))
+        {
+            gameController.LoadNextRoom(2);
         }
 
         // TRAPS

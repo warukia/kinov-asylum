@@ -19,12 +19,15 @@ public class HarryDoor : MonoBehaviour
     {
         if (isExploding)
         {
-            Explode();
+            StartCoroutine(Explode());
         }
     }
 
-    private void Explode()
+    private IEnumerator Explode()
     {
+        isExploding = false;
         animator.SetBool("explode", true);
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
     }
 }

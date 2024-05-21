@@ -13,7 +13,7 @@ public class SkinnyLegend : MonoBehaviour
     public AudioClip SLBonesChasingClip;
     public SkinnyLegendActivation skinnyLegendActivation;
 
-    private float speed = 4.88f;
+    private float speed = 4.65f;
     public bool IsActive = false;
 
     void Update()

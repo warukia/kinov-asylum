@@ -21,7 +21,6 @@ public class LeakSoundController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("LeakDrop"))
         {
-            Debug.Log("playinggggg");
             audioSource.PlayOneShot(leakDropClip[Random.Range(0, 3)], .7f);
         }
     }

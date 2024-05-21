@@ -1897,7 +1897,7 @@ GameObject:
   - component: {fileID: 1297281266}
   - component: {fileID: 1297281265}
   m_Layer: 5
-  m_Name: background
+  m_Name: box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1936,14 +1936,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0.8352941}
+  m_Color: {r: 0.8, g: 0.8, b: 0.8, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5663fb369a4427443ac540dc330f0933, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df3994e2fa27ca14b814a0b32b2d9ce7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2455,8 +2455,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.95, y: -381.91}
-  m_SizeDelta: {x: 1738.17, y: 194.4}
+  m_AnchoredPosition: {x: -2.95, y: -386.84}
+  m_SizeDelta: {x: 1738.17, y: 184.54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1487026137
 MonoBehaviour:
