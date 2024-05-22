@@ -15,6 +15,7 @@ public class UIController : MonoBehaviour
 
     public AudioClip buttonClickClip;
     public AudioClip pillSwallowClip;
+    public AudioClip simonClip;
 
     private void Start()
     {
@@ -68,6 +69,7 @@ public class UIController : MonoBehaviour
 
     public void Simon()
     {
+        audioSource.PlayOneShot(simonClip);
         playerController.TakeDamage(30);
         simonAnim.SetBool("simonAttack", true);
         StartCoroutine(waitForAnimationEndSimon());

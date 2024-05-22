@@ -123,8 +123,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 6193148551133427080}
   creditsPanel: {fileID: 0}
+  simonAnim: {fileID: 0}
   buttonClickClip: {fileID: 8300000, guid: 2a8aa9d92d68c1e44ba43da7e1fde9d6, type: 3}
   pillSwallowClip: {fileID: 8300000, guid: 2b71ca6a69ff0fd4782a4ff4fdf5309d, type: 3}
+  simonClip: {fileID: 8300000, guid: e56618930944d4c4eb76844008e59181, type: 3}
 --- !u!95 &703103481297117676
 Animator:
   serializedVersion: 5
@@ -545,7 +547,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.498291, y: 4.2177734}
+  m_AnchoredPosition: {x: -7.498291, y: 4.1099854}
   m_SizeDelta: {x: 2857.665, y: 1607.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7608853830724518911
