@@ -762,6 +762,7 @@ MonoBehaviour:
   simonAnim: {fileID: 0}
   buttonClickClip: {fileID: 8300000, guid: 2a8aa9d92d68c1e44ba43da7e1fde9d6, type: 3}
   pillSwallowClip: {fileID: 0}
+  simonClip: {fileID: 0}
 --- !u!114 &1547429562
 MonoBehaviour:
   m_ObjectHideFlags: 0

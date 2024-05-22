@@ -11,6 +11,7 @@ public class Viktor : MonoBehaviour
 
     private UIDialogueAssistantViktorEncounter viktorEncounterDialogue;
 
+    public GameObject door;
     private bool isGone;
 
     void Start()
@@ -33,7 +34,13 @@ public class Viktor : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
 
+            anim.SetBool("isWalking", true);
             rb.velocity = new Vector2(4, 0);
+        }
+
+        if (transform.position.x >= door.transform.position.x)
+        {
+            Destroy(gameObject);
         }
     }
 }

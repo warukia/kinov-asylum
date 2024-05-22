@@ -9,6 +9,9 @@ public class UIDialogueAssistantViktorWin : MonoBehaviour
 {
     private TextMeshProUGUI messageText;
     private TextWriter.TextWriterSingle textWriterSingle;
+
+    public GameObject victoryCanvas;
+    public GameObject illustrationManager;
     
     public int messageInt;
 
@@ -35,11 +38,14 @@ public class UIDialogueAssistantViktorWin : MonoBehaviour
                        " ",
                        " ",
                        " ",
+                       " ",
                 };
                 if (messageInt >= messageArray.Length)
                 {
                     // End here the conversation.
                     messageInt = 0;
+                    victoryCanvas.SetActive(true);
+                    Destroy(illustrationManager);
                     Destroy(gameObject);
                 }
 

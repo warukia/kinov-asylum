@@ -44,6 +44,12 @@ public class UIController : MonoBehaviour
         creditsPanel.SetActive(true);
     }
 
+    public void CreditsClose()
+    {
+        audioSource.PlayOneShot(buttonClickClip, 1f);
+        creditsPanel.SetActive(false);
+    }
+
     public void MainMenu()
     {
         audioSource.PlayOneShot(buttonClickClip);
